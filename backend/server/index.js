@@ -192,7 +192,7 @@ app.post('/api/auth/logout', (req, res) => {
   try {
     res.clearCookie('auth_token', {
       httpOnly: true,
-      secure: true, // Match login cookie settings
+      secure: process.env.NODE_ENV === 'production', // Match login cookie settings
       sameSite: 'strict'
     });
     res.json({ message: 'Logout successful' });
