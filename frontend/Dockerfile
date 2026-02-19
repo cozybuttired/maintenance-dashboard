@@ -12,6 +12,9 @@ RUN npm install
 # Copy source code
 COPY . .
 
+# Install terser for minification
+RUN npm install terser
+
 # Build the app
 RUN npm run build
 
