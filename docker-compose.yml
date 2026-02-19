@@ -1,0 +1,86 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: maintenance-dashboard-backend
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT:-3001}:3001"
+    environment:
+      # Node.js Configuration
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: 3001
+
+      # MySQL/Prisma Database Configuration
+      # When running in Docker, use 'mysql-server' container name as the host
+      DATABASE_URL: "mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
+
+      # Data Source Configuration
+      DATA_SOURCE: ${DATA_SOURCE:-LIVE}
+
+      # MSSQL Sage 200 Configuration (branch databases)
+      MSSQL_USER: ${MSSQL_USER}
+      MSSQL_PASS: ${MSSQL_PASS}
+      MSSQL_PORT: ${MSSQL_PORT:-1433}
+
+      # Branch Server Configuration
+      PMB_SERVER: ${PMB_SERVER}
+      PMB_DB: ${PMB_DB}
+
+      PTA_SERVER: ${PTA_SERVER}
+      PTA_DB: ${PTA_DB}
+
+      QTN_SERVER: ${QTN_SERVER}
+      QTN_DB: ${QTN_DB}
+
+      CPT_SERVER: ${CPT_SERVER}
+      CPT_DB: ${CPT_DB}
+
+      # JWT Configuration
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-24h}
+
+      # Frontend URL for CORS
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5173}
+
+    networks:
+      - app-network
+      - mysql-server
+
+    depends_on:
+      - frontend
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: maintenance-dashboard-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-5173}:5173"
+    environment:
+      - VITE_API_URL=${VITE_API_URL:-http://localhost:3001}
+    networks:
+      - app-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  app-network:
+    driver: bridge
+
+  # Reference the existing mysql-server network
+  mysql-server:
+    external: true

@@ -1,0 +1,1631 @@
+{
+  "extractedAt": "2026-02-19T06:49:23.391Z",
+  "totalUniqueCodes": 139,
+  "groups": 5,
+  "branchSummary": {
+    "PMB": {
+      "success": true,
+      "recordCount": 161,
+      "codes": [
+        "Burra - Remington",
+        "Albida - C hall",
+        "Albida - C Hall Professional Fees",
+        "Albida - Oribi Hangar",
+        "Burra - B Saxon Murray",
+        "Burra - Black Rock",
+        "Burra - Boma",
+        "Burra - Boma Farm",
+        "Burra - Carter Drive",
+        "Burra - Dirt Road",
+        "Burra - Egli",
+        "Burra - Egli Professional Fees",
+        "Burra - Harding",
+        "Burra - Jesmond Road",
+        "Burra - Thornycroft",
+        "Burra - Thornycroft Professional Fees",
+        "Burra - Truda CPT",
+        "Burra - Truda PMB",
+        "Burra - Truda PMB Professional Fees",
+        "Burra - Truda PTA",
+        "CPT - Plant & Machinery",
+        "CPT - Projects Pallets",
+        "CPT- Computer &Office Equipment (Under7K)",
+        "MyLife - Plant & Machinery",
+        "MyLife - Projects Machinery",
+        "PMB - Fleet (New Purchases)",
+        "PMB - Office Furniture (Over R7k per Item)",
+        "PMB - Projects Machinery",
+        "PMB- Building Consumables B",
+        "Tuscan - Office Furniture (Over R7k per Item)",
+        "Tuscan - Plant & Machinery",
+        "Tuscan - Projects Machinery",
+        "Albida - C Hall Consumables",
+        "Albida - C Hall Maintenance",
+        "Albida - Oribi Hangar Consumables",
+        "Albida - Oribi Hangar Maintenance",
+        "Burra - B Consumables",
+        "Burra - B Saxon Murray Consumable",
+        "Burra - B Saxon Murray Livestock",
+        "Burra - B Saxon Murray Maintenanc",
+        "Burra - Black Rock Consumables",
+        "Burra - Black Rock Maintenance",
+        "Burra - Boma Consumables",
+        "Burra - Boma Farm Consumables",
+        "Burra - Boma Farm Maintenance",
+        "Burra - Boma Maintenance",
+        "Burra - Carter Drive Consumables",
+        "Burra - Carter Drive Maintenance",
+        "Burra - Dirt Road Maintenance",
+        "Burra - Egli Maintenance",
+        "Burra - Jesmond Road Consumables",
+        "Burra - Jesmond Road Maintenance",
+        "Burra - Remington Consumables",
+        "Burra - Remington Maintenance",
+        "Burra - Thornycroft Consumables",
+        "Burra - Thornycroft Maintenance",
+        "Burra - Truda CPT Consumables",
+        "Burra - Truda CPT Maintenance",
+        "Burra - Truda PMB Consumables",
+        "Burra - Truda PMB Maintenance",
+        "Burra - Truda PTA Maintenance",
+        "Burra - Wonderboom House Consumables",
+        "Burra - Zimbabwe Consumables",
+        "Burra - Zimbabwe Maintenance",
+        "CPT - Projects Consumables",
+        "CPT - Cleaning Expenses",
+        "CPT - DAFF Consumables",
+        "CPT - DAFF Maintenance",
+        "CPT - Dispatch Consumables",
+        "CPT - Electrical Maintenance",
+        "CPT - H & S Maintenance",
+        "CPT - ICT (Offices & Factory Maintenance)",
+        "CPT - Laboratory Maintenance & Quality",
+        "CPT - Marketing",
+        "CPT - Mechanical Maintenance",
+        "CPT - Office Consumables",
+        "CPT - Office Furniture (Over R7k per Item",
+        "CPT - Production Consumables & Maintenance",
+        "Dirt Road Factory Expenses",
+        "MyLife - Building Maintenance",
+        "MyLife - Cleaning Expenses",
+        "MyLife - Electrical Maintenance",
+        "MyLife - H & S Consumables",
+        "MyLife - H & S Maintenance",
+        "MyLife - Laboratory Maintenance & Quality",
+        "MyLife - Mechanical Maintenance",
+        "MyLife - Production Consumables & Maintenance",
+        "MyLife - Stationary",
+        "MyLife - Work Wear",
+        "MyLife-ComputerFurnEquip(Under 7K)",
+        "PMB - Building Maintenance",
+        "PMB - Building Maintenance Muy",
+        "PMB - Computer & Office equip (Under7K)",
+        "PMB - Computer & Office Equipment (Over R7k)",
+        "PMB - DAFF/RO Consumables",
+        "PMB - DAFF/RO Maintenance",
+        "PMB - Fleet (Operating Expenses)",
+        "PMB - H & S Consumables",
+        "PMB - Staff Training",
+        "PMB - Stationery",
+        "PMB - Waste Consumables",
+        "PMB - Work Wear (Uniforms)",
+        "PMB Fleet - Delivery/Tautliner",
+        "PMB Fleet - Farming/Building",
+        "PMB Fleet - Production Equipment",
+        "PMB Fleet - Rep/Pool/Fleet Vehicles",
+        "PMB- Building Maintenance B",
+        "PMB- Building Maintenance C",
+        "Remington - Purchases",
+        "Sponsorship",
+        "Tuscan - Building Maintenance",
+        "Tuscan - Cleaning Expenses",
+        "Tuscan - Computer & Office Equipment (Over R7k)",
+        "Tuscan - Electrical Maintenance",
+        "Tuscan - H & S Consumables",
+        "Tuscan - H & S Maintenance",
+        "Tuscan - Laboratory Maintenance & Quality",
+        "Tuscan - Mechanical Maintenance",
+        "Tuscan - Office Consumables",
+        "Tuscan - Production Consumables & Maintenance",
+        "Tuscan - Stationery",
+        "Tuscan - Waste Consumables",
+        "Tuscan - Work Wear"
+      ]
+    },
+    "PTA": {
+      "success": true,
+      "recordCount": 47,
+      "codes": [
+        "Burra - Truda PTA Professional Fees",
+        "Burra - Wonderboom House",
+        "Burra - Wonderboom House Professional Fees",
+        "PTA - Computer & Office Equipment (Over R7k)",
+        "Burra - Truda PTA Consumables",
+        "Burra - Wonderboom House Maintenance",
+        "PTA - CNG Gas"
+      ]
+    },
+    "QTN": {
+      "success": true,
+      "recordCount": 41,
+      "codes": [
+        "Burra-Truda-QTN",
+        "Queenstown-Building",
+        "Burra - Truda QTN",
+        "Burra - Truda QTN Professional Fees",
+        "Burra - Truda QTN Consumables",
+        "Burra - Truda QTN Maintenance",
+        "QTN - Electrical Miantenance",
+        "QTN - Security",
+        "QTN - Mechanical Maintenance"
+      ]
+    },
+    "CPT": {
+      "success": false,
+      "recordCount": 0,
+      "codes": []
+    }
+  },
+  "costCodesByGroup": {
+    "Unknown": [
+      {
+        "fullCode": "Burra - Remington",
+        "baseCode": "Burra - Remington",
+        "branch": null,
+        "group": "Unknown",
+        "normalized": "BURRAREMINGTON",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra-Truda-QTN",
+        "baseCode": "Burra-Truda-QTN",
+        "branch": null,
+        "group": "Unknown",
+        "normalized": "BURRATRUDAQTN",
+        "foundInBranches": [
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "Queenstown-Building",
+        "baseCode": "Queenstown-Building",
+        "branch": null,
+        "group": "Unknown",
+        "normalized": "QUEENSTOWNBUILDING",
+        "foundInBranches": [
+          "QTN"
+        ]
+      }
+    ],
+    "Albida": [
+      {
+        "fullCode": "Albida - C hall",
+        "baseCode": "Albida - C hall",
+        "branch": null,
+        "group": "Albida",
+        "normalized": "ALBIDACHALL",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Albida - C Hall Professional Fees",
+        "baseCode": "Albida - C Hall Professional Fees",
+        "branch": null,
+        "group": "Albida",
+        "normalized": "ALBIDACHALLPROFESSIONALFEES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Albida - Oribi Hangar",
+        "baseCode": "Albida - Oribi Hangar",
+        "branch": null,
+        "group": "Albida",
+        "normalized": "ALBIDAORIBIHANGAR",
+        "foundInBranches": [
+          "PMB"
+        ]
+      }
+    ],
+    "Capex": [
+      {
+        "fullCode": "Burra - B Saxon Murray",
+        "baseCode": "Burra - B Saxon Murray",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRABSAXONMURRAY",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Black Rock",
+        "baseCode": "Burra - Black Rock",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRABLACKROCK",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Boma",
+        "baseCode": "Burra - Boma",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRABOMA",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Boma Farm",
+        "baseCode": "Burra - Boma Farm",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRABOMAFARM",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Carter Drive",
+        "baseCode": "Burra - Carter Drive",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRACARTERDRIVE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Dirt Road",
+        "baseCode": "Burra - Dirt Road",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRADIRTROAD",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Egli",
+        "baseCode": "Burra - Egli",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRAEGLI",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Egli Professional Fees",
+        "baseCode": "Burra - Egli Professional Fees",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRAEGLIPROFESSIONALFEES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Harding",
+        "baseCode": "Burra - Harding",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRAHARDING",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Jesmond Road",
+        "baseCode": "Burra - Jesmond Road",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRAJESMONDROAD",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Thornycroft",
+        "baseCode": "Burra - Thornycroft",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRATHORNYCROFT",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Thornycroft Professional Fees",
+        "baseCode": "Burra - Thornycroft Professional Fees",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRATHORNYCROFTPROFESSIONALFEES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda CPT",
+        "baseCode": "Burra - Truda CPT",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRATRUDACPT",
+        "foundInBranches": [
+          "PMB",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda PMB",
+        "baseCode": "Burra - Truda PMB",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRATRUDAPMB",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda PMB Professional Fees",
+        "baseCode": "Burra - Truda PMB Professional Fees",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRATRUDAPMBPROFESSIONALFEES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda PTA",
+        "baseCode": "Burra - Truda PTA",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRATRUDAPTA",
+        "foundInBranches": [
+          "PMB",
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda PTA Professional Fees",
+        "baseCode": "Burra - Truda PTA Professional Fees",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRATRUDAPTAPROFESSIONALFEES",
+        "foundInBranches": [
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda QTN",
+        "baseCode": "Burra - Truda QTN",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRATRUDAQTN",
+        "foundInBranches": [
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda QTN Professional Fees",
+        "baseCode": "Burra - Truda QTN Professional Fees",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRATRUDAQTNPROFESSIONALFEES",
+        "foundInBranches": [
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "Burra - Wonderboom House",
+        "baseCode": "Burra - Wonderboom House",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRAWONDERBOOMHOUSE",
+        "foundInBranches": [
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "Burra - Wonderboom House Professional Fees",
+        "baseCode": "Burra - Wonderboom House Professional Fees",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "BURRAWONDERBOOMHOUSEPROFESSIONALFEES",
+        "foundInBranches": [
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "CPT - Plant & Machinery",
+        "baseCode": "Plant & Machinery",
+        "branch": "CPT",
+        "group": "Capex",
+        "normalized": "PLANTMACHINERY",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT - Projects Pallets",
+        "baseCode": "Projects Pallets",
+        "branch": "CPT",
+        "group": "Capex",
+        "normalized": "PROJECTSPALLETS",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT- Computer &Office Equipment (Under7K)",
+        "baseCode": "Computer &Office Equipment (Under7K)",
+        "branch": "CPT",
+        "group": "Capex",
+        "normalized": "COMPUTEROFFICEEQUIPMENTUNDER7K",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - Plant & Machinery",
+        "baseCode": "MyLife - Plant & Machinery",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "MYLIFEPLANTMACHINERY",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - Projects Machinery",
+        "baseCode": "MyLife - Projects Machinery",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "MYLIFEPROJECTSMACHINERY",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "PMB - Fleet (New Purchases)",
+        "baseCode": "Fleet (New Purchases)",
+        "branch": "PMB",
+        "group": "Capex",
+        "normalized": "FLEETNEWPURCHASES",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB - Office Furniture (Over R7k per Item)",
+        "baseCode": "Office Furniture (Over R7k per Item)",
+        "branch": "PMB",
+        "group": "Capex",
+        "normalized": "OFFICEFURNITUREOVERR7KPERITEM",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB - Projects Machinery",
+        "baseCode": "Projects Machinery",
+        "branch": "PMB",
+        "group": "Capex",
+        "normalized": "PROJECTSMACHINERY",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB- Building Consumables B",
+        "baseCode": "Building Consumables B",
+        "branch": "PMB",
+        "group": "Capex",
+        "normalized": "BUILDINGCONSUMABLESB",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "PTA - Computer & Office Equipment (Over R7k)",
+        "baseCode": "Computer & Office Equipment (Over R7k)",
+        "branch": "PTA",
+        "group": "Capex",
+        "normalized": "COMPUTEROFFICEEQUIPMENTOVERR7K",
+        "foundInBranches": [
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Office Furniture (Over R7k per Item)",
+        "baseCode": "Tuscan - Office Furniture (Over R7k per Item)",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "TUSCANOFFICEFURNITUREOVERR7KPERITEM",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Plant & Machinery",
+        "baseCode": "Tuscan - Plant & Machinery",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "TUSCANPLANTMACHINERY",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Projects Machinery",
+        "baseCode": "Tuscan - Projects Machinery",
+        "branch": null,
+        "group": "Capex",
+        "normalized": "TUSCANPROJECTSMACHINERY",
+        "foundInBranches": [
+          "PMB"
+        ]
+      }
+    ],
+    "Maintenance": [
+      {
+        "fullCode": "Albida - C Hall Consumables",
+        "baseCode": "Albida - C Hall Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "ALBIDACHALLCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Albida - C Hall Maintenance",
+        "baseCode": "Albida - C Hall Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "ALBIDACHALLMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Albida - Oribi Hangar Consumables",
+        "baseCode": "Albida - Oribi Hangar Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "ALBIDAORIBIHANGARCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Albida - Oribi Hangar Maintenance",
+        "baseCode": "Albida - Oribi Hangar Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "ALBIDAORIBIHANGARMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - B Consumables",
+        "baseCode": "Burra - B Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRABCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - B Saxon Murray Consumable",
+        "baseCode": "Burra - B Saxon Murray Consumable",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRABSAXONMURRAYCONSUMABLE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - B Saxon Murray Livestock",
+        "baseCode": "Burra - B Saxon Murray Livestock",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRABSAXONMURRAYLIVESTOCK",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - B Saxon Murray Maintenanc",
+        "baseCode": "Burra - B Saxon Murray Maintenanc",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRABSAXONMURRAYMAINTENANC",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Black Rock Consumables",
+        "baseCode": "Burra - Black Rock Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRABLACKROCKCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Black Rock Maintenance",
+        "baseCode": "Burra - Black Rock Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRABLACKROCKMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Boma Consumables",
+        "baseCode": "Burra - Boma Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRABOMACONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Boma Farm Consumables",
+        "baseCode": "Burra - Boma Farm Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRABOMAFARMCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Boma Farm Maintenance",
+        "baseCode": "Burra - Boma Farm Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRABOMAFARMMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Boma Maintenance",
+        "baseCode": "Burra - Boma Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRABOMAMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Carter Drive Consumables",
+        "baseCode": "Burra - Carter Drive Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRACARTERDRIVECONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Carter Drive Maintenance",
+        "baseCode": "Burra - Carter Drive Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRACARTERDRIVEMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Dirt Road Maintenance",
+        "baseCode": "Burra - Dirt Road Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRADIRTROADMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Egli Maintenance",
+        "baseCode": "Burra - Egli Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRAEGLIMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Jesmond Road Consumables",
+        "baseCode": "Burra - Jesmond Road Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRAJESMONDROADCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Jesmond Road Maintenance",
+        "baseCode": "Burra - Jesmond Road Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRAJESMONDROADMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Remington Consumables",
+        "baseCode": "Burra - Remington Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRAREMINGTONCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Remington Maintenance",
+        "baseCode": "Burra - Remington Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRAREMINGTONMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Thornycroft Consumables",
+        "baseCode": "Burra - Thornycroft Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRATHORNYCROFTCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Thornycroft Maintenance",
+        "baseCode": "Burra - Thornycroft Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRATHORNYCROFTMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda CPT Consumables",
+        "baseCode": "Burra - Truda CPT Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRATRUDACPTCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda CPT Maintenance",
+        "baseCode": "Burra - Truda CPT Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRATRUDACPTMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda PMB Consumables",
+        "baseCode": "Burra - Truda PMB Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRATRUDAPMBCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda PMB Maintenance",
+        "baseCode": "Burra - Truda PMB Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRATRUDAPMBMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda PTA Consumables",
+        "baseCode": "Burra - Truda PTA Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRATRUDAPTACONSUMABLES",
+        "foundInBranches": [
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda PTA Maintenance",
+        "baseCode": "Burra - Truda PTA Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRATRUDAPTAMAINTENANCE",
+        "foundInBranches": [
+          "PMB",
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda QTN Consumables",
+        "baseCode": "Burra - Truda QTN Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRATRUDAQTNCONSUMABLES",
+        "foundInBranches": [
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "Burra - Truda QTN Maintenance",
+        "baseCode": "Burra - Truda QTN Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRATRUDAQTNMAINTENANCE",
+        "foundInBranches": [
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "Burra - Wonderboom House Consumables",
+        "baseCode": "Burra - Wonderboom House Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRAWONDERBOOMHOUSECONSUMABLES",
+        "foundInBranches": [
+          "PMB",
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "Burra - Wonderboom House Maintenance",
+        "baseCode": "Burra - Wonderboom House Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRAWONDERBOOMHOUSEMAINTENANCE",
+        "foundInBranches": [
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "Burra - Zimbabwe Consumables",
+        "baseCode": "Burra - Zimbabwe Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRAZIMBABWECONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Burra - Zimbabwe Maintenance",
+        "baseCode": "Burra - Zimbabwe Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "BURRAZIMBABWEMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "CPT - Cleaning Expenses",
+        "baseCode": "Cleaning Expenses",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "CLEANINGEXPENSES",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT - DAFF Consumables",
+        "baseCode": "DAFF Consumables",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "DAFFCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "CPT - DAFF Maintenance",
+        "baseCode": "DAFF Maintenance",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "DAFFMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "CPT - Dispatch Consumables",
+        "baseCode": "Dispatch Consumables",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "DISPATCHCONSUMABLES",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT - Electrical Maintenance",
+        "baseCode": "Electrical Maintenance",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "ELECTRICALMAINTENANCE",
+        "foundInBranches": [
+          "PMB",
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "CPT - H & S Maintenance",
+        "baseCode": "H & S Maintenance",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "HSMAINTENANCE",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT - ICT (Offices & Factory Maintenance)",
+        "baseCode": "ICT (Offices & Factory Maintenance)",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "ICTOFFICESFACTORYMAINTENANCE",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT - Laboratory Maintenance & Quality",
+        "baseCode": "Laboratory Maintenance & Quality",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "LABORATORYMAINTENANCEQUALITY",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT - Marketing",
+        "baseCode": "Marketing",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "MARKETING",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT - Mechanical Maintenance",
+        "baseCode": "Mechanical Maintenance",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "MECHANICALMAINTENANCE",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT - Office Consumables",
+        "baseCode": "Office Consumables",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "OFFICECONSUMABLES",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT - Office Furniture (Over R7k per Item",
+        "baseCode": "Office Furniture (Over R7k per Item",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "OFFICEFURNITUREOVERR7KPERITEM",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "CPT - Production Consumables & Maintenance",
+        "baseCode": "Production Consumables & Maintenance",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "PRODUCTIONCONSUMABLESMAINTENANCE",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "CPT - Projects Consumables",
+        "baseCode": "Projects Consumables",
+        "branch": "CPT",
+        "group": "Maintenance",
+        "normalized": "PROJECTSCONSUMABLES",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "Dirt Road Factory Expenses",
+        "baseCode": "Dirt Road Factory Expenses",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "DIRTROADFACTORYEXPENSES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - Building Maintenance",
+        "baseCode": "MyLife - Building Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFEBUILDINGMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - Cleaning Expenses",
+        "baseCode": "MyLife - Cleaning Expenses",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFECLEANINGEXPENSES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - Electrical Maintenance",
+        "baseCode": "MyLife - Electrical Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFEELECTRICALMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - H & S Consumables",
+        "baseCode": "MyLife - H & S Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFEHSCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - H & S Maintenance",
+        "baseCode": "MyLife - H & S Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFEHSMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - Laboratory Maintenance & Quality",
+        "baseCode": "MyLife - Laboratory Maintenance & Quality",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFELABORATORYMAINTENANCEQUALITY",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - Mechanical Maintenance",
+        "baseCode": "MyLife - Mechanical Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFEMECHANICALMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - Production Consumables & Maintenance",
+        "baseCode": "MyLife - Production Consumables & Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFEPRODUCTIONCONSUMABLESMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - Stationary",
+        "baseCode": "MyLife - Stationary",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFESTATIONARY",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife - Work Wear",
+        "baseCode": "MyLife - Work Wear",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFEWORKWEAR",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "MyLife-ComputerFurnEquip(Under 7K)",
+        "baseCode": "MyLife-ComputerFurnEquip(Under 7K)",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "MYLIFECOMPUTERFURNEQUIPUNDER7K",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "PMB - Building Maintenance",
+        "baseCode": "Building Maintenance",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "BUILDINGMAINTENANCE",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB - Building Maintenance Muy",
+        "baseCode": "Building Maintenance Muy",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "BUILDINGMAINTENANCEMUY",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "PMB - Computer & Office equip (Under7K)",
+        "baseCode": "Computer & Office equip (Under7K)",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "COMPUTEROFFICEEQUIPUNDER7K",
+        "foundInBranches": [
+          "PMB",
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "PMB - Computer & Office Equipment (Over R7k)",
+        "baseCode": "Computer & Office Equipment (Over R7k)",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "COMPUTEROFFICEEQUIPMENTOVERR7K",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "PMB - DAFF/RO Consumables",
+        "baseCode": "DAFF/RO Consumables",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "DAFFROCONSUMABLES",
+        "foundInBranches": [
+          "PMB",
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "PMB - DAFF/RO Maintenance",
+        "baseCode": "DAFF/RO Maintenance",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "DAFFROMAINTENANCE",
+        "foundInBranches": [
+          "PMB",
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "PMB - Fleet (Operating Expenses)",
+        "baseCode": "Fleet (Operating Expenses)",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "FLEETOPERATINGEXPENSES",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB - H & S Consumables",
+        "baseCode": "H & S Consumables",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "HSCONSUMABLES",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB - Staff Training",
+        "baseCode": "Staff Training",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "STAFFTRAINING",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB - Stationery",
+        "baseCode": "Stationery",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "STATIONERY",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB - Waste Consumables",
+        "baseCode": "Waste Consumables",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "WASTECONSUMABLES",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB - Work Wear (Uniforms)",
+        "baseCode": "Work Wear (Uniforms)",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "WORKWEARUNIFORMS",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB Fleet - Delivery/Tautliner",
+        "baseCode": "Fleet - Delivery/Tautliner",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "FLEETDELIVERYTAUTLINER",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB Fleet - Farming/Building",
+        "baseCode": "Fleet - Farming/Building",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "FLEETFARMINGBUILDING",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "PMB Fleet - Production Equipment",
+        "baseCode": "Fleet - Production Equipment",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "FLEETPRODUCTIONEQUIPMENT",
+        "foundInBranches": [
+          "PMB",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB Fleet - Rep/Pool/Fleet Vehicles",
+        "baseCode": "Fleet - Rep/Pool/Fleet Vehicles",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "FLEETREPPOOLFLEETVEHICLES",
+        "foundInBranches": [
+          "PMB",
+          "PTA",
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "PMB- Building Maintenance B",
+        "baseCode": "Building Maintenance B",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "BUILDINGMAINTENANCEB",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "PMB- Building Maintenance C",
+        "baseCode": "Building Maintenance C",
+        "branch": "PMB",
+        "group": "Maintenance",
+        "normalized": "BUILDINGMAINTENANCEC",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "PTA - CNG Gas",
+        "baseCode": "CNG Gas",
+        "branch": "PTA",
+        "group": "Maintenance",
+        "normalized": "CNGGAS",
+        "foundInBranches": [
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "QTN - Electrical Miantenance",
+        "baseCode": "Electrical Miantenance",
+        "branch": "QTN",
+        "group": "Maintenance",
+        "normalized": "ELECTRICALMIANTENANCE",
+        "foundInBranches": [
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "QTN - Security",
+        "baseCode": "Security",
+        "branch": "QTN",
+        "group": "Maintenance",
+        "normalized": "SECURITY",
+        "foundInBranches": [
+          "QTN"
+        ]
+      },
+      {
+        "fullCode": "Remington - Purchases",
+        "baseCode": "Remington - Purchases",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "REMINGTONPURCHASES",
+        "foundInBranches": [
+          "PMB",
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "Sponsorship",
+        "baseCode": "Sponsorship",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "SPONSORSHIP",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Building Maintenance",
+        "baseCode": "Tuscan - Building Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANBUILDINGMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Cleaning Expenses",
+        "baseCode": "Tuscan - Cleaning Expenses",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANCLEANINGEXPENSES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Computer & Office Equipment (Over R7k)",
+        "baseCode": "Tuscan - Computer & Office Equipment (Over R7k)",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANCOMPUTEROFFICEEQUIPMENTOVERR7K",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Electrical Maintenance",
+        "baseCode": "Tuscan - Electrical Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANELECTRICALMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - H & S Consumables",
+        "baseCode": "Tuscan - H & S Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANHSCONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - H & S Maintenance",
+        "baseCode": "Tuscan - H & S Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANHSMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Laboratory Maintenance & Quality",
+        "baseCode": "Tuscan - Laboratory Maintenance & Quality",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANLABORATORYMAINTENANCEQUALITY",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Mechanical Maintenance",
+        "baseCode": "Tuscan - Mechanical Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANMECHANICALMAINTENANCE",
+        "foundInBranches": [
+          "PMB",
+          "PTA"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Office Consumables",
+        "baseCode": "Tuscan - Office Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANOFFICECONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Production Consumables & Maintenance",
+        "baseCode": "Tuscan - Production Consumables & Maintenance",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANPRODUCTIONCONSUMABLESMAINTENANCE",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Stationery",
+        "baseCode": "Tuscan - Stationery",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANSTATIONERY",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Waste Consumables",
+        "baseCode": "Tuscan - Waste Consumables",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANWASTECONSUMABLES",
+        "foundInBranches": [
+          "PMB"
+        ]
+      },
+      {
+        "fullCode": "Tuscan - Work Wear",
+        "baseCode": "Tuscan - Work Wear",
+        "branch": null,
+        "group": "Maintenance",
+        "normalized": "TUSCANWORKWEAR",
+        "foundInBranches": [
+          "PMB"
+        ]
+      }
+    ],
+    "QTN - Mechanical Maintenance": [
+      {
+        "fullCode": "QTN - Mechanical Maintenance",
+        "baseCode": "Mechanical Maintenance",
+        "branch": "QTN",
+        "group": "QTN - Mechanical Maintenance",
+        "normalized": "MECHANICALMAINTENANCE",
+        "foundInBranches": [
+          "QTN"
+        ]
+      }
+    ]
+  }
+}

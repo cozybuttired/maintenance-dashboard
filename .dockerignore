@@ -1,0 +1,64 @@
+# Git
+.git
+.gitignore
+
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE & Editor
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build artifacts
+dist
+dist-ssr
+build
+*.local
+
+# Logs
+logs
+*.log
+lerna-debug.log
+
+# Testing
+coverage
+.nyc_output
+
+# Database
+*.db
+*.db-journal
+dev.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation & other non-essential files
+*.md
+DOCUMENTATION_INDEX.txt
+EXECUTIVE_SUMMARY.txt
+FINAL_STATUS.txt
+IMMEDIATE_ACTIONS.md
+PASSWORD_CHANGE_FEATURE.txt
+PERFORMANCE.md
+DATABASE_SETUP.md
+
+# WebStorm/IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Node modules in any subdirectory
+**/node_modules

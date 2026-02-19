@@ -1,0 +1,135 @@
+Group,Full Code,Base Code,Primary Branch,Found In Branches,Normalized Code
+Unknown,Burra - Remington,Burra - Remington,null,PMB,BURRAREMINGTON
+Albida,Albida - C hall,Albida - C hall,null,PMB,ALBIDACHALL
+Albida,Albida - C Hall Professional Fees,Albida - C Hall Professional Fees,null,PMB,ALBIDACHALLPROFESSIONALFEES
+Albida,Albida - Oribi Hangar,Albida - Oribi Hangar,null,PMB,ALBIDAORIBIHANGAR
+Capex,Burra - B Saxon Murray,Burra - B Saxon Murray,null,PMB,BURRABSAXONMURRAY
+Capex,Burra - Black Rock,Burra - Black Rock,null,PMB,BURRABLACKROCK
+Capex,Burra - Boma,Burra - Boma,null,PMB,BURRABOMA
+Capex,Burra - Boma Farm,Burra - Boma Farm,null,PMB,BURRABOMAFARM
+Capex,Burra - Carter Drive,Burra - Carter Drive,null,PMB,BURRACARTERDRIVE
+Capex,Burra - Dirt Road,Burra - Dirt Road,null,PMB,BURRADIRTROAD
+Capex,Burra - Egli,Burra - Egli,null,PMB,BURRAEGLI
+Capex,Burra - Egli Professional Fees,Burra - Egli Professional Fees,null,PMB,BURRAEGLIPROFESSIONALFEES
+Capex,Burra - Harding,Burra - Harding,null,PMB,BURRAHARDING
+Capex,Burra - Jesmond Road,Burra - Jesmond Road,null,PMB,BURRAJESMONDROAD
+Capex,Burra - Thornycroft,Burra - Thornycroft,null,PMB,BURRATHORNYCROFT
+Capex,Burra - Thornycroft Professional Fees,Burra - Thornycroft Professional Fees,null,PMB,BURRATHORNYCROFTPROFESSIONALFEES
+Capex,Burra - Truda CPT,Burra - Truda CPT,null,PMB | QTN | CPT,BURRATRUDACPT
+Capex,Burra - Truda CPT Professional Fees,Burra - Truda CPT Professional Fees,null,CPT,BURRATRUDACPTPROFESSIONALFEES
+Capex,Burra - Truda PMB,Burra - Truda PMB,null,PMB,BURRATRUDAPMB
+Capex,Burra - Truda PMB Professional Fees,Burra - Truda PMB Professional Fees,null,PMB,BURRATRUDAPMBPROFESSIONALFEES
+Capex,Burra - Truda PTA,Burra - Truda PTA,null,PMB | PTA,BURRATRUDAPTA
+Capex,Burra - Truda PTA Professional Fees,Burra - Truda PTA Professional Fees,null,PTA,BURRATRUDAPTAPROFESSIONALFEES
+Capex,Burra - Truda QTN,Burra - Truda QTN,null,QTN,BURRATRUDAQTN
+Capex,Burra - Truda QTN Professional Fees,Burra - Truda QTN Professional Fees,null,QTN,BURRATRUDAQTNPROFESSIONALFEES
+Capex,Burra - Wonderboom House,Burra - Wonderboom House,null,PTA,BURRAWONDERBOOMHOUSE
+Capex,Burra - Wonderboom House Professional Fees,Burra - Wonderboom House Professional Fees,null,PTA,BURRAWONDERBOOMHOUSEPROFESSIONALFEES
+Capex,CPT - Plant & Machinery,Plant & Machinery,CPT,PMB | PTA | QTN | CPT,PLANTMACHINERY
+Capex,CPT - Projects Pallets,Projects Pallets,CPT,PMB | PTA | QTN | CPT,PROJECTSPALLETS
+Capex,CPT- Computer &Office Equipment (Over7K),Computer &Office Equipment (Over7K),CPT,CPT,COMPUTEROFFICEEQUIPMENTOVER7K
+Capex,CPT- Computer &Office Equipment (Under7K),Computer &Office Equipment (Under7K),CPT,PMB,COMPUTEROFFICEEQUIPMENTUNDER7K
+Capex,MyLife - Plant & Machinery,MyLife - Plant & Machinery,null,PMB,MYLIFEPLANTMACHINERY
+Capex,MyLife - Projects Machinery,MyLife - Projects Machinery,null,PMB,MYLIFEPROJECTSMACHINERY
+Capex,PMB - Fleet (New Purchases),Fleet (New Purchases),PMB,PMB,FLEETNEWPURCHASES
+Capex,PMB - Office Furniture (Over R7k per Item),Office Furniture (Over R7k per Item),PMB,PMB | PTA | QTN,OFFICEFURNITUREOVERR7KPERITEM
+Capex,PMB - Projects Machinery,Projects Machinery,PMB,PMB | PTA | QTN | CPT,PROJECTSMACHINERY
+Capex,PMB- Building Consumables B,Building Consumables B,PMB,PMB,BUILDINGCONSUMABLESB
+Capex,Tuscan - Plant & Machinery,Tuscan - Plant & Machinery,null,PMB,TUSCANPLANTMACHINERY
+Capex,Tuscan - Projects Machinery,Tuscan - Projects Machinery,null,PMB,TUSCANPROJECTSMACHINERY
+Maintenance,Albida - C Hall Consumables,Albida - C Hall Consumables,null,PMB,ALBIDACHALLCONSUMABLES
+Maintenance,Albida - C Hall Maintenance,Albida - C Hall Maintenance,null,PMB,ALBIDACHALLMAINTENANCE
+Maintenance,Albida - Oribi Hangar Maintenance,Albida - Oribi Hangar Maintenance,null,PMB,ALBIDAORIBIHANGARMAINTENANCE
+Maintenance,Burra - B Consumables,Burra - B Consumables,null,PMB,BURRABCONSUMABLES
+Maintenance,Burra - B Saxon Murray Consumable,Burra - B Saxon Murray Consumable,null,PMB,BURRABSAXONMURRAYCONSUMABLE
+Maintenance,Burra - B Saxon Murray Livestock,Burra - B Saxon Murray Livestock,null,PMB,BURRABSAXONMURRAYLIVESTOCK
+Maintenance,Burra - B Saxon Murray Maintenanc,Burra - B Saxon Murray Maintenanc,null,PMB,BURRABSAXONMURRAYMAINTENANC
+Maintenance,Burra - Black Rock Consumables,Burra - Black Rock Consumables,null,PMB,BURRABLACKROCKCONSUMABLES
+Maintenance,Burra - Black Rock Maintenance,Burra - Black Rock Maintenance,null,PMB,BURRABLACKROCKMAINTENANCE
+Maintenance,Burra - Boma Consumables,Burra - Boma Consumables,null,PMB,BURRABOMACONSUMABLES
+Maintenance,Burra - Boma Farm Consumables,Burra - Boma Farm Consumables,null,PMB,BURRABOMAFARMCONSUMABLES
+Maintenance,Burra - Boma Farm Maintenance,Burra - Boma Farm Maintenance,null,PMB,BURRABOMAFARMMAINTENANCE
+Maintenance,Burra - Boma Maintenance,Burra - Boma Maintenance,null,PMB,BURRABOMAMAINTENANCE
+Maintenance,Burra - Carter Drive Consumables,Burra - Carter Drive Consumables,null,PMB,BURRACARTERDRIVECONSUMABLES
+Maintenance,Burra - Carter Drive Maintenance,Burra - Carter Drive Maintenance,null,PMB,BURRACARTERDRIVEMAINTENANCE
+Maintenance,Burra - Dirt Road Maintenance,Burra - Dirt Road Maintenance,null,PMB,BURRADIRTROADMAINTENANCE
+Maintenance,Burra - Egli Maintenance,Burra - Egli Maintenance,null,PMB,BURRAEGLIMAINTENANCE
+Maintenance,Burra - Jesmond Road Consumables,Burra - Jesmond Road Consumables,null,PMB,BURRAJESMONDROADCONSUMABLES
+Maintenance,Burra - Jesmond Road Maintenance,Burra - Jesmond Road Maintenance,null,PMB,BURRAJESMONDROADMAINTENANCE
+Maintenance,Burra - Remington Consumables,Burra - Remington Consumables,null,PMB,BURRAREMINGTONCONSUMABLES
+Maintenance,Burra - Remington Maintenance,Burra - Remington Maintenance,null,PMB,BURRAREMINGTONMAINTENANCE
+Maintenance,Burra - Thornycroft Consumables,Burra - Thornycroft Consumables,null,PMB,BURRATHORNYCROFTCONSUMABLES
+Maintenance,Burra - Thornycroft Maintenance,Burra - Thornycroft Maintenance,null,PMB,BURRATHORNYCROFTMAINTENANCE
+Maintenance,Burra - Truda CPT Consumables,Burra - Truda CPT Consumables,null,PMB | CPT,BURRATRUDACPTCONSUMABLES
+Maintenance,Burra - Truda CPT Maintenance,Burra - Truda CPT Maintenance,null,PMB | CPT,BURRATRUDACPTMAINTENANCE
+Maintenance,Burra - Truda PMB Consumables,Burra - Truda PMB Consumables,null,PMB,BURRATRUDAPMBCONSUMABLES
+Maintenance,Burra - Truda PMB Maintenance,Burra - Truda PMB Maintenance,null,PMB,BURRATRUDAPMBMAINTENANCE
+Maintenance,Burra - Truda PTA Consumables,Burra - Truda PTA Consumables,null,PTA,BURRATRUDAPTACONSUMABLES
+Maintenance,Burra - Truda PTA Maintenance,Burra - Truda PTA Maintenance,null,PTA | CPT,BURRATRUDAPTAMAINTENANCE
+Maintenance,Burra - Truda QTN Consumables,Burra - Truda QTN Consumables,null,QTN,BURRATRUDAQTNCONSUMABLES
+Maintenance,Burra - Truda QTN Maintenance,Burra - Truda QTN Maintenance,null,QTN,BURRATRUDAQTNMAINTENANCE
+Maintenance,Burra - Wonderboom House Consumables,Burra - Wonderboom House Consumables,null,PTA,BURRAWONDERBOOMHOUSECONSUMABLES
+Maintenance,Burra - Wonderboom House Maintenance,Burra - Wonderboom House Maintenance,null,PTA,BURRAWONDERBOOMHOUSEMAINTENANCE
+Maintenance,Burra - Zimbabwe Consumables,Burra - Zimbabwe Consumables,null,PMB,BURRAZIMBABWECONSUMABLES
+Maintenance,CPT - Dispatch Consumables,Dispatch Consumables,CPT,PMB | PTA | QTN | CPT,DISPATCHCONSUMABLES
+Maintenance,CPT - Diss Transport (Staff Transport),Diss Transport (Staff Transport),CPT,CPT,DISSTRANSPORTSTAFFTRANSPORT
+Maintenance,CPT - Electrical Maintenance,Electrical Maintenance,CPT,PMB | PTA | CPT,ELECTRICALMAINTENANCE
+Maintenance,CPT - H & S Maintenance,H & S Maintenance,CPT,PMB | PTA | QTN | CPT,HSMAINTENANCE
+Maintenance,CPT - ICT (Offices & Factory Maintenance),ICT (Offices & Factory Maintenance),CPT,PMB | PTA | QTN | CPT,ICTOFFICESFACTORYMAINTENANCE
+Maintenance,CPT - Laboratory Maintenance & Quality,Laboratory Maintenance & Quality,CPT,PMB | PTA | QTN | CPT,LABORATORYMAINTENANCEQUALITY
+Maintenance,CPT - Marketing,Marketing,CPT,PMB | PTA | QTN,MARKETING
+Maintenance,CPT - Mechanical Maintenance,Mechanical Maintenance,CPT,PMB | PTA | QTN | CPT,MECHANICALMAINTENANCE
+Maintenance,CPT - Production Consumables & Maintenance,Production Consumables & Maintenance,CPT,PMB | PTA | QTN | CPT,PRODUCTIONCONSUMABLESMAINTENANCE
+Maintenance,CPT - Stationary,Stationary,CPT,CPT,STATIONARY
+Maintenance,CPT - Work Wear,Work Wear,CPT,CPT,WORKWEAR
+Maintenance,Dirt Road Factory Expenses,Dirt Road Factory Expenses,null,PMB,DIRTROADFACTORYEXPENSES
+Maintenance,MyLife - Building Maintenance,MyLife - Building Maintenance,null,PMB,MYLIFEBUILDINGMAINTENANCE
+Maintenance,MyLife - Cleaning Expenses,MyLife - Cleaning Expenses,null,PMB,MYLIFECLEANINGEXPENSES
+Maintenance,MyLife - Electrical Maintenance,MyLife - Electrical Maintenance,null,PMB,MYLIFEELECTRICALMAINTENANCE
+Maintenance,MyLife - H & S Consumables,MyLife - H & S Consumables,null,PMB,MYLIFEHSCONSUMABLES
+Maintenance,MyLife - H & S Maintenance,MyLife - H & S Maintenance,null,PMB,MYLIFEHSMAINTENANCE
+Maintenance,MyLife - Laboratory Maintenance & Quality,MyLife - Laboratory Maintenance & Quality,null,PMB,MYLIFELABORATORYMAINTENANCEQUALITY
+Maintenance,MyLife - Mechanical Maintenance,MyLife - Mechanical Maintenance,null,PMB,MYLIFEMECHANICALMAINTENANCE
+Maintenance,MyLife - Production Consumables & Maintenance,MyLife - Production Consumables & Maintenance,null,PMB,MYLIFEPRODUCTIONCONSUMABLESMAINTENANCE
+Maintenance,MyLife - Stationary,MyLife - Stationary,null,PMB,MYLIFESTATIONARY
+Maintenance,MyLife - Work Wear,MyLife - Work Wear,null,PMB,MYLIFEWORKWEAR
+Maintenance,MyLife-ComputerFurnEquip(Under 7K),MyLife-ComputerFurnEquip(Under 7K),null,PMB,MYLIFECOMPUTERFURNEQUIPUNDER7K
+Maintenance,PMB - Building Maintenance,Building Maintenance,PMB,PMB | PTA | QTN | CPT,BUILDINGMAINTENANCE
+Maintenance,PMB - Building Maintenance Muy,Building Maintenance Muy,PMB,PMB,BUILDINGMAINTENANCEMUY
+Maintenance,PMB - Cleaning Expenses,Cleaning Expenses,PMB,PMB | PTA | QTN | CPT,CLEANINGEXPENSES
+Maintenance,PMB - Computer & Office equip (Under7K),Computer & Office equip (Under7K),PMB,PMB | PTA,COMPUTEROFFICEEQUIPUNDER7K
+Maintenance,PMB - Computer & Office Equipment (Over R7k),Computer & Office Equipment (Over R7k),PMB,PMB | PTA | QTN,COMPUTEROFFICEEQUIPMENTOVERR7K
+Maintenance,PMB - DAFF/RO Consumables,DAFF/RO Consumables,PMB,PMB | PTA,DAFFROCONSUMABLES
+Maintenance,PMB - DAFF/RO Maintenance,DAFF/RO Maintenance,PMB,PMB | PTA,DAFFROMAINTENANCE
+Maintenance,PMB - Fleet (Operating Expenses),Fleet (Operating Expenses),PMB,PMB | PTA | QTN | CPT,FLEETOPERATINGEXPENSES
+Maintenance,PMB - H & S Consumables,H & S Consumables,PMB,PMB | PTA | QTN | CPT,HSCONSUMABLES
+Maintenance,PMB - Office Consumables,Office Consumables,PMB,PMB | PTA | QTN | CPT,OFFICECONSUMABLES
+Maintenance,PMB - Projects Consumables,Projects Consumables,PMB,PMB | PTA | QTN | CPT,PROJECTSCONSUMABLES
+Maintenance,PMB - Staff Training,Staff Training,PMB,PMB | PTA | QTN | CPT,STAFFTRAINING
+Maintenance,PMB - Stationery,Stationery,PMB,PMB | PTA | QTN,STATIONERY
+Maintenance,PMB - Waste Consumables,Waste Consumables,PMB,PMB | PTA | QTN | CPT,WASTECONSUMABLES
+Maintenance,PMB - Work Wear (Uniforms),Work Wear (Uniforms),PMB,PMB | PTA | QTN,WORKWEARUNIFORMS
+Maintenance,PMB Fleet - Delivery/Tautliner,Fleet - Delivery/Tautliner,PMB,PMB | PTA | QTN | CPT,FLEETDELIVERYTAUTLINER
+Maintenance,PMB Fleet - Farming/Building,Fleet - Farming/Building,PMB,PMB,FLEETFARMINGBUILDING
+Maintenance,PMB Fleet - Production Equipment,Fleet - Production Equipment,PMB,PMB | QTN,FLEETPRODUCTIONEQUIPMENT
+Maintenance,PMB Fleet - Rep/Pool/Fleet Vehicles,Fleet - Rep/Pool/Fleet Vehicles,PMB,PMB | PTA | QTN | CPT,FLEETREPPOOLFLEETVEHICLES
+Maintenance,PMB- Building Maintenance B,Building Maintenance B,PMB,PMB,BUILDINGMAINTENANCEB
+Maintenance,PMB- Building Maintenance C,Building Maintenance C,PMB,PMB,BUILDINGMAINTENANCEC
+Maintenance,PTA - CNG Gas,CNG Gas,PTA,PTA,CNGGAS
+Maintenance,QTN - Electrical Miantenance,Electrical Miantenance,QTN,QTN,ELECTRICALMIANTENANCE
+Maintenance,QTN - Security,Security,QTN,QTN | CPT,SECURITY
+Maintenance,Remington - Purchases,Remington - Purchases,null,PMB,REMINGTONPURCHASES
+Maintenance,Sponsorship,Sponsorship,null,PMB,SPONSORSHIP
+Maintenance,Tuscan - Building Maintenance,Tuscan - Building Maintenance,null,PMB,TUSCANBUILDINGMAINTENANCE
+Maintenance,Tuscan - Cleaning Expenses,Tuscan - Cleaning Expenses,null,PMB,TUSCANCLEANINGEXPENSES
+Maintenance,Tuscan - Computer & Office Equipment (Over R7k),Tuscan - Computer & Office Equipment (Over R7k),null,PMB,TUSCANCOMPUTEROFFICEEQUIPMENTOVERR7K
+Maintenance,Tuscan - Electrical Maintenance,Tuscan - Electrical Maintenance,null,PMB,TUSCANELECTRICALMAINTENANCE
+Maintenance,Tuscan - H & S Consumables,Tuscan - H & S Consumables,null,PMB,TUSCANHSCONSUMABLES
+Maintenance,Tuscan - H & S Maintenance,Tuscan - H & S Maintenance,null,PMB,TUSCANHSMAINTENANCE
+Maintenance,Tuscan - Laboratory Maintenance & Quality,Tuscan - Laboratory Maintenance & Quality,null,PMB,TUSCANLABORATORYMAINTENANCEQUALITY
+Maintenance,Tuscan - Mechanical Maintenance,Tuscan - Mechanical Maintenance,null,PMB | PTA,TUSCANMECHANICALMAINTENANCE
+Maintenance,Tuscan - Office Consumables,Tuscan - Office Consumables,null,PMB,TUSCANOFFICECONSUMABLES
+Maintenance,Tuscan - Production Consumables & Maintenance,Tuscan - Production Consumables & Maintenance,null,PMB,TUSCANPRODUCTIONCONSUMABLESMAINTENANCE
+Maintenance,Tuscan - Stationery,Tuscan - Stationery,null,PMB,TUSCANSTATIONERY
+Maintenance,Tuscan - Waste Consumables,Tuscan - Waste Consumables,null,PMB,TUSCANWASTECONSUMABLES
+Maintenance,Tuscan - Work Wear,Tuscan - Work Wear,null,PMB,TUSCANWORKWEAR

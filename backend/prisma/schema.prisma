@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String            @id @default(cuid())
+  username          String            @unique
+  email             String            @unique
+  passwordHash      String
+  firstName         String
+  lastName         String
+  role              String            @default("User") // ADMIN or User
+  branch            String
+  userType          String?           // Link to user type for dynamic updates
+  assignedCostCodes String?           // JSON array of cost codes
+  assignedGroups    String?           // JSON array of groups (Maintenance, CapEx, etc)
+  isActive          Boolean           @default(true)
+  passwordMustChange Boolean          @default(true) // Force password change on first login
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+}
+
+model Setting {
+  id        String    @id @default(cuid())
+  key       String    @unique
+  value     String    @db.LongText
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Group {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  isActive  Boolean   @default(true)
+  costCodes CostCode[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model CostCode {
+  id        String    @id @default(cuid())
+  code      String    @unique
+  groupId   String
+  group     Group     @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  branch    String?
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([groupId])
+  @@index([branch])
+  @@index([code])
+}
+
+model Group {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  isActive  Boolean   @default(true)
+  costCodes CostCode[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model CostCode {
+  id        String    @id @default(cuid())
+  code      String    @unique
+  groupId   String
+  group     Group     @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  branch    String?   // Primary branch if has explicit prefix (PMB, PTA, QTN, CPT), null otherwise
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([groupId])
+  @@index([branch])
+  @@index([code])
+}
