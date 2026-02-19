@@ -15,6 +15,9 @@ COPY . .
 # Install terser for minification
 RUN npm install terser
 
+# Set API URL environment variable for build
+ENV VITE_API_BASE_URL=http://10.0.60.57:3001/api
+
 # Build the app
 RUN npm run build
 
