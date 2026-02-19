@@ -233,21 +233,21 @@ function App() {
 
       const data = await response.json();
 
-      // Delay setting user to allow success animation to show
-      setTimeout(() => {
-        setUser(data.user);
+      // Wait for success animation to show before setting user
+      await new Promise(resolve => setTimeout(resolve, 2500));
 
-        // Check if user must change password on first login
-        if (data.passwordMustChange) {
-          setPasswordMustChange(true);
-          return; // Don't load dashboard yet
-        }
+      setUser(data.user);
 
-        if (data.user.role !== 'ADMIN' && data.user.branch && data.user.branch !== 'ALL') {
-          setSelectedBranch(data.user.branch);
-        }
-        fetchMaintenanceData();
-      }, 2500);
+      // Check if user must change password on first login
+      if (data.passwordMustChange) {
+        setPasswordMustChange(true);
+        return; // Don't load dashboard yet
+      }
+
+      if (data.user.role !== 'ADMIN' && data.user.branch && data.user.branch !== 'ALL') {
+        setSelectedBranch(data.user.branch);
+      }
+      fetchMaintenanceData();
     } catch (error) {
       setError('Login failed. Please check your credentials.');
     }
