@@ -59,27 +59,3 @@ model CostCode {
   @@index([branch])
   @@index([code])
 }
-
-model Group {
-  id        String    @id @default(cuid())
-  name      String    @unique
-  isActive  Boolean   @default(true)
-  costCodes CostCode[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-}
-
-model CostCode {
-  id        String    @id @default(cuid())
-  code      String    @unique
-  groupId   String
-  group     Group     @relation(fields: [groupId], references: [id], onDelete: Cascade)
-  branch    String?   // Primary branch if has explicit prefix (PMB, PTA, QTN, CPT), null otherwise
-  isActive  Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-
-  @@index([groupId])
-  @@index([branch])
-  @@index([code])
-}
