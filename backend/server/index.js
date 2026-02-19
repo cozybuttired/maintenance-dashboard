@@ -152,7 +152,7 @@ app.post('/api/auth/login', loginLimiter, validate(loginSchema), async (req, res
     // Set httpOnly cookie for token
     res.cookie('auth_token', token, {
       httpOnly: true,
-      secure: true, // Always enforce HTTPS (development can use localhost exception)
+      secure: process.env.NODE_ENV === 'production', // Only HTTPS in production
       sameSite: 'strict', // Prevent CSRF attacks
       maxAge: 24 * 60 * 60 * 1000 // 24 hours
     });
