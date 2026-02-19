@@ -30,7 +30,7 @@ RUN apk add --no-cache dumb-init
 # Copy from builder
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/backend ./backend
-COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/backend/prisma ./backend/prisma
 
 # Install production dependencies only
 RUN npm install --only=production
