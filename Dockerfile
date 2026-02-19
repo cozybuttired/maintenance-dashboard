@@ -10,8 +10,8 @@ COPY package*.json ./
 COPY backend/package*.json ./backend/
 
 # Install dependencies
-RUN npm ci
-RUN cd backend && npm ci
+RUN npm install
+RUN cd backend && npm install
 
 # Copy source code
 COPY . .
@@ -33,8 +33,8 @@ COPY --from=builder /app/backend ./backend
 COPY --from=builder /app/prisma ./prisma
 
 # Install production dependencies only
-RUN npm ci --only=production
-RUN cd backend && npm ci --only=production
+RUN npm install --only=production
+RUN cd backend && npm install --only=production
 
 # Create non-root user for security
 RUN addgroup -g 1001 -S nodejs && \
