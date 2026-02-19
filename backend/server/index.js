@@ -13,6 +13,7 @@ const { authMiddleware, adminOnly, rowLevelSecurityFilter, filterDataByPermissio
 const { registrationSchema, loginSchema, validate } = require('./validation');
 const cacheService = require('./cacheService');
 const { generateTemporaryPassword, validatePasswordStrength, passwordsMatch } = require('./passwordUtils');
+const { logLoginSuccess, logLoginFailure, logAuthError } = require('./logger');
 
 const app = express();
 const prisma = new PrismaClient();
@@ -111,6 +112,7 @@ app.post('/api/auth/login', loginLimiter, validate(loginSchema), async (req, res
     const { username, password } = req.body;
 
     if (!username || !password) {
+      logLoginFailure(req, username, 'Missing username or password');
       return res.status(400).json({ error: 'Username and password are required' });
     }
 
@@ -132,12 +134,19 @@ app.post('/api/auth/login', loginLimiter, validate(loginSchema), async (req, res
       }
     });
 
-    if (!user || !user.isActive) {
+    if (!user) {
+      logLoginFailure(req, username, 'User not found');
+      return res.status(401).json({ error: 'Invalid credentials or user inactive' });
+    }
+
+    if (!user.isActive) {
+      logLoginFailure(req, username, 'User account is inactive');
       return res.status(401).json({ error: 'Invalid credentials or user inactive' });
     }
 
     const isValidPassword = await bcrypt.compare(password, user.passwordHash);
     if (!isValidPassword) {
+      logLoginFailure(req, username, 'Invalid password');
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
@@ -152,21 +161,24 @@ app.post('/api/auth/login', loginLimiter, validate(loginSchema), async (req, res
     // Set httpOnly cookie for token
     res.cookie('auth_token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Only HTTPS in production
-      sameSite: 'strict', // Prevent CSRF attacks
-      maxAge: 24 * 60 * 60 * 1000 // 24 hours
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 24 * 60 * 60 * 1000
     });
+
+    // Log successful login with full user details
+    logLoginSuccess(req, user);
 
     res.json({
       message: 'Login successful',
       user: userWithoutPassword,
-      // Include passwordMustChange flag for frontend to force password change screen
       passwordMustChange: user.passwordMustChange
     });
   } catch (error) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('Login error:', error);
-    }
+    logAuthError(req, 'Server error during login', { 
+      error: error.message,
+      stack: process.env.NODE_ENV !== 'production' ? error.stack : undefined 
+    });
     res.status(500).json({ error: 'Server error during login' });
   }
 });
@@ -188,22 +200,42 @@ app.get('/api/auth/me', authMiddleware, async (req, res) => {
 });
 
 // Logout endpoint - clears auth token
-app.post('/api/auth/logout', (req, res) => {
+app.post('/api/auth/logout', authMiddleware, (req, res) => {
   try {
+    const username = req.user.username;
     res.clearCookie('auth_token', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Match login cookie settings
+      secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict'
     });
+    
+    // Log logout
+    const { getTimestamp, getClientIp } = require('./logger');
+    console.log(`[LOGOUT] ${getTimestamp()} - User: ${username} | IP: ${getClientIp(req)}`);
+    
     res.json({ message: 'Logout successful' });
   } catch (error) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('Logout error:', error);
-    }
     res.status(500).json({ error: 'Server error during logout' });
   }
 });
 
+
+// Login monitoring endpoint - admins only
+app.get('/api/auth/login-stats', authMiddleware, adminOnly, (req, res) => {
+  try {
+    const { getLoginStats, getRecentLogins } = require('./logger');
+    const stats = getLoginStats();
+    const recentLogins = getRecentLogins(20);
+    
+    res.json({
+      stats,
+      recentLogins
+    });
+  } catch (error) {
+    console.error('Error fetching login stats:', error);
+    res.status(500).json({ error: 'Server error fetching login statistics' });
+  }
+});
 // Password change endpoint - allows users to change password (especially after first login)
 app.post('/api/auth/change-password', authMiddleware, async (req, res) => {
   try {
