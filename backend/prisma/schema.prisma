@@ -20,8 +20,8 @@ model User {
   role              String            @default("User") // ADMIN or User
   branch            String
   userType          String?           // Link to user type for dynamic updates
-  assignedCostCodes String?           // JSON array of cost codes
-  assignedGroups    String?           // JSON array of groups (Maintenance, CapEx, etc)
+  assignedCostCodes String?           @db.Text // JSON array of cost codes
+  assignedGroups    String?           @db.Text // JSON array of groups (Maintenance, CapEx, etc)
   isActive          Boolean           @default(true)
   passwordMustChange Boolean          @default(true) // Force password change on first login
   createdAt         DateTime          @default(now())
