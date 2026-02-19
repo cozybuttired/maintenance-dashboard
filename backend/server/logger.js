@@ -1,15 +1,30 @@
 const fs = require('fs');
 const path = require('path');
 
-// Create logs directory if it doesn't exist
-const logsDir = path.join(__dirname, '../../logs');
-if (!fs.existsSync(logsDir)) {
-  fs.mkdirSync(logsDir, { recursive: true });
+// Create logs directory if it doesn't exist - handle permission errors gracefully
+let logsDir = null;
+try {
+  logsDir = path.join(__dirname, '../../logs');
+  if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir, { recursive: true });
+  }
+} catch (error) {
+  // If we can't create logs directory, try a temp directory instead
+  console.warn('Warning: Could not create logs directory at', logsDir, '- using temp directory instead');
+  logsDir = '/tmp/logs';
+  try {
+    if (!fs.existsSync(logsDir)) {
+      fs.mkdirSync(logsDir, { recursive: true });
+    }
+  } catch (tempError) {
+    console.warn('Warning: Could not create temp logs directory - logging to console only');
+    logsDir = null;
+  }
 }
 
 // Define log file paths
-const loginLogFile = path.join(logsDir, 'login.log');
-const errorLogFile = path.join(logsDir, 'errors.log');
+const loginLogFile = logsDir ? path.join(logsDir, 'login.log') : null;
+const errorLogFile = logsDir ? path.join(logsDir, 'errors.log') : null;
 
 /**
  * Get client IP address from request
@@ -52,11 +67,13 @@ const logLoginAttempt = (req, username, status, details = {}) => {
   const reset = '\x1b[0m';
   console.log(`${statusColor}[LOGIN] ${timestamp} - User: ${username} | Status: ${status} | IP: ${ipAddress}${reset}`);
   
-  // Log to file
-  try {
-    fs.appendFileSync(loginLogFile, logLine + '\n');
-  } catch (error) {
-    console.error('Error writing to login log:', error);
+  // Log to file if available
+  if (loginLogFile) {
+    try {
+      fs.appendFileSync(loginLogFile, logLine + '\n');
+    } catch (error) {
+      console.error('Error writing to login log:', error.message);
+    }
   }
 
   return logEntry;
@@ -107,10 +124,12 @@ const logAuthError = (req, errorMessage, errorDetails = {}) => {
   
   console.error(`[AUTH ERROR] ${timestamp} - ${errorMessage} | IP: ${ipAddress}`);
   
-  try {
-    fs.appendFileSync(errorLogFile, logLine + '\n');
-  } catch (error) {
-    console.error('Error writing to error log:', error);
+  if (errorLogFile) {
+    try {
+      fs.appendFileSync(errorLogFile, logLine + '\n');
+    } catch (error) {
+      console.error('Error writing to error log:', error.message);
+    }
   }
 
   return errorEntry;
@@ -120,6 +139,8 @@ const logAuthError = (req, errorMessage, errorDetails = {}) => {
  * Get recent login logs
  */
 const getRecentLogins = (limit = 50) => {
+  if (!loginLogFile) return [];
+  
   try {
     const logs = fs.readFileSync(loginLogFile, 'utf-8')
       .split('\n')
@@ -136,7 +157,7 @@ const getRecentLogins = (limit = 50) => {
     
     return logs;
   } catch (error) {
-    console.error('Error reading login logs:', error);
+    console.error('Error reading login logs:', error.message);
     return [];
   }
 };
@@ -145,6 +166,17 @@ const getRecentLogins = (limit = 50) => {
  * Get login stats
  */
 const getLoginStats = () => {
+  if (!loginLogFile) return {
+    totalLogins: 0,
+    successfulLogins: 0,
+    failedLogins: 0,
+    uniqueUsers: 0,
+    uniqueIPs: 0,
+    lastLogin: null,
+    logs: [],
+    note: 'Logging to console only - no file storage available'
+  };
+  
   try {
     const logs = fs.readFileSync(loginLogFile, 'utf-8')
       .split('\n')
@@ -173,7 +205,7 @@ const getLoginStats = () => {
       logs: logs.slice(-10)
     };
   } catch (error) {
-    console.error('Error calculating login stats:', error);
+    console.error('Error calculating login stats:', error.message);
     return {
       totalLogins: 0,
       successfulLogins: 0,
