@@ -157,11 +157,12 @@ function App() {
 
   // Poll for fresh data every 45 seconds to keep consistency with MSSQL
   // Only poll when viewing the dashboard, not when on other tabs (users, analytics, settings)
+  // Uses silent fetch to avoid flickering/loading states
   useEffect(() => {
     if (!user || activeItem !== 'dashboard') return;
 
     const interval = setInterval(() => {
-      fetchMaintenanceData();
+      fetchMaintenanceDataSilent(); // Silent background update, no loading indicator
     }, 45000); // 45 seconds
 
     return () => clearInterval(interval);
@@ -281,6 +282,46 @@ function App() {
           setError('Failed to load data. No cached data available. Check your connection.');
         }
       }
+    }
+  };
+
+  // Silent background fetch for 45-second polling (no loading state, no flickering)
+  const fetchMaintenanceDataSilent = async () => {
+    const cacheKey = `maintenance_${dateRange.startDate}_${dateRange.endDate}`;
+
+    try {
+      const params = new URLSearchParams();
+      if (dateRange.startDate) params.append('startDate', dateRange.startDate);
+      if (dateRange.endDate) params.append('endDate', dateRange.endDate);
+
+      const response = await fetch(`${API_BASE_URL}/maintenance/records?${params.toString()}`, {
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        signal: AbortSignal.timeout(30000)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const records = data.records || [];
+
+        setMaintenanceData(records);
+        // Only clear error if it was a retry message
+        if (error?.includes('Retrying')) {
+          setError(null);
+        }
+
+        // Save to cache silently
+        dataCache.saveToDisk(cacheKey, records, {
+          dateRange,
+          selectedBranch,
+          fetchedAt: new Date().toISOString()
+        });
+      }
+    } catch (error) {
+      // Silent fail - don't disrupt UI, data stays on screen
+      console.debug('[App] Silent background fetch failed:', error.message);
     }
   };
 
