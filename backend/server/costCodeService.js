@@ -300,7 +300,7 @@ class CostCodeService {
   extractBranchFromCode(costCode) {
     const normalized = costCode.trim().toUpperCase();
     for (const branch of BRANCH_PREFIXES) {
-      if (normalized.startsWith(branch + '-') || normalized.startsWith(branch + ' ')) {
+      if (normalized.startsWith(branch + '-')) {
         return branch;
       }
     }
