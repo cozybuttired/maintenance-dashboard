@@ -372,6 +372,17 @@ app.post('/api/auth/register', authMiddleware, adminOnly, validate(registrationS
     const temporaryPassword = generateTemporaryPassword();
     const passwordHash = await bcrypt.hash(temporaryPassword, 10);
 
+    // If userType is provided, look it up by name and get its ID
+    let userTypeId = null;
+    if (userType) {
+      const foundUserType = await prisma.userType.findUnique({
+        where: { name: userType }
+      });
+      if (foundUserType) {
+        userTypeId = foundUserType.id;
+      }
+    }
+
     const user = await prisma.user.create({
       data: {
         username,
@@ -381,7 +392,7 @@ app.post('/api/auth/register', authMiddleware, adminOnly, validate(registrationS
         lastName: lastName.trim(),
         role,
         branch,
-        userType: userType || null, // Track which user type this user was created from
+        userTypeId: userTypeId, // Connect to UserType by ID
         assignedCostCodes: assignedCostCodes ? JSON.stringify(assignedCostCodes) : null,
         assignedGroups: assignedGroups ? JSON.stringify(assignedGroups) : null,
         passwordMustChange: true // Force password change on first login
