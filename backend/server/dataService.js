@@ -1,6 +1,7 @@
 const dbManager = require('./dbManager');
 const costCodeService = require('./costCodeService');
 const cacheService = require('./cacheService');
+const { getSASTLogTime } = require('./timezoneUtils');
 
 class DataService {
   /**
@@ -17,7 +18,7 @@ class DataService {
       // Check cache first
       const cachedData = cacheService.get(cacheKey);
       if (cachedData) {
-        console.log(`[${new Date().toISOString()}] 💾 Cache HIT for ${branch || 'all branches'}`);
+        console.log(`${getSASTLogTime()} 💾 Cache HIT for ${branch || 'all branches'}`);
         return cachedData;
       }
 
@@ -58,27 +59,27 @@ class DataService {
       let result;
 
       if (branch) {
-        console.log(`[${new Date().toISOString()}] 📥 Fetching purchase records from ${branch}...`);
+        console.log(`${getSASTLogTime()} 📥 Fetching purchase records from ${branch}...`);
         if (filters.startDate || filters.endDate) {
           console.log(`   Date range: ${filters.startDate} to ${filters.endDate}`);
         }
         result = await dbManager.queryBranch(branch, query, params);
-        console.log(`[${new Date().toISOString()}] 📊 Raw result for ${branch}:`, { success: result.success, dataLength: result.data?.length, error: result.error });
+        console.log(`${getSASTLogTime()} 📊 Raw result for ${branch}:`, { success: result.success, dataLength: result.data?.length, error: result.error });
         const records = this._processRecords([result]);
-        console.log(`[${new Date().toISOString()}] ✅ Retrieved ${records.length} records from ${branch}`);
+        console.log(`${getSASTLogTime()} ✅ Retrieved ${records.length} records from ${branch}`);
 
         // Cache for 5 minutes
         cacheService.set(cacheKey, records, 300);
         return records;
       } else {
-        console.log(`[${new Date().toISOString()}] 📥 Fetching purchase records from all branches...`);
+        console.log(`${getSASTLogTime()} 📥 Fetching purchase records from all branches...`);
         if (filters.startDate || filters.endDate) {
           console.log(`   Date range: ${filters.startDate} to ${filters.endDate}`);
         }
         result = await dbManager.queryAllBranchesWithRetry(query, params);
         const records = this._processRecords(result);
         const successCount = result.filter(r => r.success).length;
-        console.log(`[${new Date().toISOString()}] ✅ Retrieved ${records.length} total records from ${successCount} branches`);
+        console.log(`${getSASTLogTime()} ✅ Retrieved ${records.length} total records from ${successCount} branches`);
         result.forEach(r => {
           const icon = r.success ? '✅' : '❌';
           const recordCount = r.success ? (r.data?.length || 0) : 'N/A';
@@ -90,7 +91,7 @@ class DataService {
         return records;
       }
     } catch (error) {
-      console.error(`[${new Date().toISOString()}] ❌ Error fetching purchase records:`, error.message);
+      console.error(`${getSASTLogTime()} ❌ Error fetching purchase records:`, error.message);
       throw error;
     }
   }
@@ -306,14 +307,14 @@ class DataService {
                 if (!this._isMalformedGroupName(record.group)) {
                   groupsSet.add(record.group);
                 } else {
-                  console.log(`[${new Date().toISOString()}] 🚫 Filtered out malformed group: "${record.group}"`);
+                  console.log(`${getSASTLogTime()} 🚫 Filtered out malformed group: "${record.group}"`);
                 }
               }
             });
           }
         });
         groups = Array.from(groupsSet).sort();
-        console.log(`[${new Date().toISOString()}] 📋 Available groups: ${groups.join(', ')}`);
+        console.log(`${getSASTLogTime()} 📋 Available groups: ${groups.join(', ')}`);
       }
 
       // Cache for 30 minutes (groups change less frequently)

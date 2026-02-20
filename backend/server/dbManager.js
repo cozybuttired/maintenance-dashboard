@@ -1,5 +1,6 @@
 const sql = require('mssql');
 require('dotenv').config();
+const { getSASTLogTime } = require('./timezoneUtils');
 
 class DatabaseManager {
   constructor() {
@@ -63,22 +64,22 @@ class DatabaseManager {
     };
 
     try {
-      console.log(`[${new Date().toISOString()}] 🔗 Connecting to ${branch} (${config.name}) at ${config.server}:${poolConfig.port}...`);
+      console.log(`${getSASTLogTime()} 🔗 Connecting to ${branch} (${config.name}) at ${config.server}:${poolConfig.port}...`);
       console.log(`   Database: ${config.database}`);
       console.log(`   Pool Config: server=${poolConfig.server}, database=${poolConfig.database}`);
       const pool = await sql.connect(poolConfig);
 
       // Add error handler to cleanup on connection errors
       pool.on('error', (err) => {
-        console.error(`[${new Date().toISOString()}] 🔴 Pool error for ${branch}:`, err.message);
+        console.error(`${getSASTLogTime()} 🔴 Pool error for ${branch}:`, err.message);
         this.pools.delete(branch);
         this.poolPromises.delete(branch);
       });
 
-      console.log(`[${new Date().toISOString()}] ✅ ${branch} (${config.name}) - Connection successful to database: ${poolConfig.database}`);
+      console.log(`${getSASTLogTime()} ✅ ${branch} (${config.name}) - Connection successful to database: ${poolConfig.database}`);
       return pool;
     } catch (error) {
-      console.error(`[${new Date().toISOString()}] ❌ ${branch} (${config.name}) - Connection failed:`);
+      console.error(`${getSASTLogTime()} ❌ ${branch} (${config.name}) - Connection failed:`);
       console.error(`   Server: ${config.server}:${poolConfig.port}`);
       console.error(`   Database: ${config.database}`);
       console.error(`   Error: ${error.message}`);
@@ -178,7 +179,7 @@ class DatabaseManager {
     const failedBranches = results.filter(r => !r.success).map(r => r.branch);
 
     if (failedBranches.length > 0) {
-      console.log(`[${new Date().toISOString()}] 🔄 Retrying ${failedBranches.length} failed branch(es): ${failedBranches.join(', ')}`);
+      console.log(`${getSASTLogTime()} 🔄 Retrying ${failedBranches.length} failed branch(es): ${failedBranches.join(', ')}`);
 
       // Retry failed branches individually (up to 2 more times with exponential backoff)
       for (let retryCount = 1; retryCount <= 2; retryCount++) {
@@ -192,27 +193,27 @@ class DatabaseManager {
           const retryResult = await this.executeBranchQuery(branch, query, params);
 
           if (retryResult.success) {
-            console.log(`[${new Date().toISOString()}] ✅ ${branch} recovered on retry #${retryCount}`);
+            console.log(`${getSASTLogTime()} ✅ ${branch} recovered on retry #${retryCount}`);
             // Replace the failed result with the successful one
             const failedIndex = results.findIndex(r => r.branch === branch);
             results[failedIndex] = retryResult;
             // Remove from failed list for next retry
             failedBranches.splice(failedBranches.indexOf(branch), 1);
           } else {
-            console.log(`[${new Date().toISOString()}] ❌ ${branch} still failing: ${retryResult.error}`);
+            console.log(`${getSASTLogTime()} ❌ ${branch} still failing: ${retryResult.error}`);
           }
         }
 
         // If no more failures, break early
         if (failedBranches.length === 0) {
-          console.log(`[${new Date().toISOString()}] ✅ All branches recovered after retry #${retryCount}`);
+          console.log(`${getSASTLogTime()} ✅ All branches recovered after retry #${retryCount}`);
           break;
         }
       }
 
       // Log final status
       const successCount = results.filter(r => r.success).length;
-      console.log(`[${new Date().toISOString()}] 📊 Final result: ${successCount}/${this.branchOrder.length} branches succeeded`);
+      console.log(`${getSASTLogTime()} 📊 Final result: ${successCount}/${this.branchOrder.length} branches succeeded`);
     }
 
     return results;
@@ -269,7 +270,7 @@ class DatabaseManager {
         recordCount: result.recordset.length
       };
     } catch (error) {
-      console.error(`[${new Date().toISOString()}] ❌ Query failed for ${branch}:`, error.message);
+      console.error(`${getSASTLogTime()} ❌ Query failed for ${branch}:`, error.message);
       return {
         branch,
         data: [],
@@ -346,11 +347,11 @@ class DatabaseManager {
     const failedBranches = results.filter(r => !r.success).map(r => r.branch);
     
     if (failedBranches.length === 0) {
-      console.log(`[${new Date().toISOString()}] ✅ All branches loaded successfully on first attempt`);
+      console.log(`${getSASTLogTime()} ✅ All branches loaded successfully on first attempt`);
       return results;
     }
     
-    console.log(`[${new Date().toISOString()}] 🔄 Retrying failed branches: ${failedBranches.join(', ')}`);
+    console.log(`${getSASTLogTime()} 🔄 Retrying failed branches: ${failedBranches.join(', ')}`);
     
     // Retry only the failed branches with exponential backoff
     for (let attempt = 1; attempt <= 3; attempt++) {
@@ -365,7 +366,7 @@ class DatabaseManager {
         const branch = results[idx].branch;
         const delay = Math.pow(2, attempt - 1) * 1000;
         
-        console.log(`[${new Date().toISOString()}] ⏳ ${branch} waiting ${delay}ms before retry attempt ${attempt}`);
+        console.log(`${getSASTLogTime()} ⏳ ${branch} waiting ${delay}ms before retry attempt ${attempt}`);
         await new Promise(resolve => setTimeout(resolve, delay));
         
         try {
@@ -380,12 +381,12 @@ class DatabaseManager {
       retryResults.forEach(({ idx, result }) => {
         results[idx] = result;
         const icon = result.success ? '✅' : '❌';
-        console.log(`[${new Date().toISOString()}] ${icon} ${result.branch} retry attempt ${attempt}`);
+        console.log(`${getSASTLogTime()} ${icon} ${result.branch} retry attempt ${attempt}`);
       });
     }
     
     const successCount = results.filter(r => r.success).length;
-    console.log(`[${new Date().toISOString()}] 📊 Final: ${successCount}/${results.length} branches successful`);
+    console.log(`${getSASTLogTime()} 📊 Final: ${successCount}/${results.length} branches successful`);
     return results;
   }
 }
