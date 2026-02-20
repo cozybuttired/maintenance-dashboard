@@ -5,6 +5,7 @@ import MaintenanceDashboard from './components/MaintenanceDashboard';
 import LoginForm from './components/LoginForm';
 import UserManagement from './components/UserManagement';
 import PasswordChangeForm from './components/PasswordChangeForm';
+import dataCache from './services/dataCache';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
 const APP_VERSION = '1.0.0';
@@ -51,6 +52,10 @@ function App() {
   });
 
   const handleDateRangeChange = (start, end) => {
+    // Reject backward dates
+    if (start && end && start > end) {
+      return;
+    }
     setDateRange({ startDate: start, endDate: end });
   };
 
@@ -139,12 +144,16 @@ function App() {
     }
   }, [user, selectedBranch]);
 
-  // Refetch data when date range changes
+  // Refetch data when date range changes (with 500ms debounce)
   useEffect(() => {
-    if (user) {
+    if (!user) return;
+
+    const timer = setTimeout(() => {
       fetchMaintenanceData();
-    }
-  }, [dateRange]);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [dateRange, user]);
 
   const validateToken = async () => {
     try {
@@ -188,9 +197,15 @@ function App() {
     }
   };
 
-  const fetchMaintenanceData = async () => {
+  const fetchMaintenanceData = async (retryCount = 0) => {
+    const MAX_RETRIES = 3;
+    const INITIAL_RETRY_DELAY = 2000;
+
+    const cacheKey = `maintenance_${dateRange.startDate}_${dateRange.endDate}`;
+
     try {
-      // Build query params with date range
+      setLoading(true);
+
       const params = new URLSearchParams();
       if (dateRange.startDate) params.append('startDate', dateRange.startDate);
       if (dateRange.endDate) params.append('endDate', dateRange.endDate);
@@ -199,19 +214,61 @@ function App() {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        signal: AbortSignal.timeout(10000)
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch maintenance data');
+        throw new Error(`HTTP ${response.status}`);
       }
 
       const data = await response.json();
-      setMaintenanceData(data.records || []);
+      const records = data.records || [];
+
+      setMaintenanceData(records);
+      setError(null);
       setLoading(false);
+
+      // Save successful fetch to localStorage
+      dataCache.saveToDisk(cacheKey, records, {
+        dateRange,
+        selectedBranch,
+        fetchedAt: new Date().toISOString()
+      });
+
     } catch (error) {
-      setError('Failed to load maintenance data');
-      setLoading(false);
+      console.error(`[App] Fetch error (attempt ${retryCount + 1}/${MAX_RETRIES + 1}):`, error.message);
+
+      // Try cached data first
+      const cachedData = dataCache.getFromDisk(cacheKey);
+
+      if (cachedData && cachedData.length > 0) {
+        setMaintenanceData(cachedData);
+        setLoading(false);
+        setError('⚠️ Showing cached data - connection issue detected. Retrying...');
+
+        // Retry in background if not exhausted
+        if (retryCount < MAX_RETRIES) {
+          const delay = INITIAL_RETRY_DELAY * Math.pow(2, retryCount);
+          setTimeout(() => {
+            fetchMaintenanceData(retryCount + 1);
+          }, delay);
+        }
+      } else {
+        // No cache, retry or fail
+        setLoading(false);
+
+        if (retryCount < MAX_RETRIES) {
+          const delay = INITIAL_RETRY_DELAY * Math.pow(2, retryCount);
+          setError(`Loading data... (attempt ${retryCount + 2})`);
+
+          setTimeout(() => {
+            fetchMaintenanceData(retryCount + 1);
+          }, delay);
+        } else {
+          setError('Failed to load data. No cached data available. Check your connection.');
+        }
+      }
     }
   };
 
@@ -272,6 +329,9 @@ function App() {
     } catch (error) {
       console.error('Logout request failed:', error);
     } finally {
+      // Clear all cached data
+      dataCache.clearAll();
+
       setUser(null);
       setMaintenanceData([]);
       setActiveItem('dashboard');
@@ -342,6 +402,19 @@ function App() {
       />
     );
   }
+
+  // Detect when connection is restored and retry
+  useEffect(() => {
+    const handleOnline = () => {
+      console.log('[App] Connection restored');
+      if (error && error.includes('cached data')) {
+        fetchMaintenanceData();
+      }
+    };
+
+    window.addEventListener('online', handleOnline);
+    return () => window.removeEventListener('online', handleOnline);
+  }, [dateRange, error]);
 
   return (
     <Layout
