@@ -75,7 +75,7 @@ class DataService {
         if (filters.startDate || filters.endDate) {
           console.log(`   Date range: ${filters.startDate} to ${filters.endDate}`);
         }
-        result = await dbManager.queryAllBranches(query, params);
+        result = await dbManager.queryAllBranchesWithRetry(query, params);
         const records = this._processRecords(result);
         const successCount = result.filter(r => r.success).length;
         console.log(`[${new Date().toISOString()}] ✅ Retrieved ${records.length} total records from ${successCount} branches`);
@@ -295,7 +295,7 @@ class DataService {
         result = await dbManager.queryBranch(branch, query);
         groups = (result.data?.map(r => r.group) || []).filter(g => !this._isMalformedGroupName(g));
       } else {
-        result = await dbManager.queryAllBranches(query);
+        result = await dbManager.queryAllBranchesWithRetry(query);
         const groupsSet = new Set();
         const allGroups = [];
         result.forEach(r => {
@@ -354,7 +354,7 @@ class DataService {
         // Deduplicate and normalize
         codes = costCodeService.deduplicateCodes(rawCodes);
       } else {
-        result = await dbManager.queryAllBranches(query);
+        result = await dbManager.queryAllBranchesWithRetry(query);
         const costCodes = [];
         result.forEach(r => {
           if (r.success && r.data) {

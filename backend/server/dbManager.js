@@ -287,6 +287,61 @@ class DatabaseManager {
 
     return status;
   }
+
+  /**
+   * Query all branches in parallel, then retry only failed branches individually
+   * This ensures successful branches return data quickly while failed ones get retries
+   */
+  async queryAllBranchesWithRetry(query, params = []) {
+    // First pass: query all branches in parallel
+    const results = await this.queryAllBranches(query, params);
+    
+    // Find which branches failed
+    const failedBranches = results.filter(r => !r.success).map(r => r.branch);
+    
+    if (failedBranches.length === 0) {
+      console.log(`[${new Date().toISOString()}] ✅ All branches loaded successfully on first attempt`);
+      return results;
+    }
+    
+    console.log(`[${new Date().toISOString()}] 🔄 Retrying failed branches: ${failedBranches.join(', ')}`);
+    
+    // Retry only the failed branches with exponential backoff
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      const failedIndexes = results
+        .map((r, idx) => r.success ? null : idx)
+        .filter(idx => idx !== null);
+      
+      if (failedIndexes.length === 0) break;
+      
+      // Retry all currently failed branches in parallel
+      const retryPromises = failedIndexes.map(async (idx) => {
+        const branch = results[idx].branch;
+        const delay = Math.pow(2, attempt - 1) * 1000;
+        
+        console.log(`[${new Date().toISOString()}] ⏳ ${branch} waiting ${delay}ms before retry attempt ${attempt}`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        
+        try {
+          const result = await this.queryBranch(branch, query, params);
+          return { idx, result };
+        } catch (error) {
+          return { idx, result: { branch, success: false, error: error.message, data: [] } };
+        }
+      });
+      
+      const retryResults = await Promise.all(retryPromises);
+      retryResults.forEach(({ idx, result }) => {
+        results[idx] = result;
+        const icon = result.success ? '✅' : '❌';
+        console.log(`[${new Date().toISOString()}] ${icon} ${result.branch} retry attempt ${attempt}`);
+      });
+    }
+    
+    const successCount = results.filter(r => r.success).length;
+    console.log(`[${new Date().toISOString()}] 📊 Final: ${successCount}/${results.length} branches successful`);
+    return results;
+  }
 }
 
 module.exports = new DatabaseManager();
