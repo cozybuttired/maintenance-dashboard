@@ -2,6 +2,7 @@ const dbManager = require('./dbManager');
 const costCodeService = require('./costCodeService');
 const cacheService = require('./cacheService');
 const { getSASTLogTime } = require('./timezoneUtils');
+const { dataService } = require('./winstonLogger');
 
 class DataService {
   /**
@@ -18,7 +19,7 @@ class DataService {
       // Check cache first
       const cachedData = cacheService.get(cacheKey);
       if (cachedData) {
-        console.log(`${getSASTLogTime()} 💾 Cache HIT for ${branch || 'all branches'}`);
+        dataService.info(`💾 Cache HIT for ${branch || 'all branches'}`);
         return cachedData;
       }
 
