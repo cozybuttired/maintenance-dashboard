@@ -215,7 +215,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json'
         },
-        signal: AbortSignal.timeout(10000)
+        signal: AbortSignal.timeout(30000) // 30s timeout to allow for database retries
       });
 
       if (!response.ok) {
@@ -408,13 +408,17 @@ function App() {
     const handleOnline = () => {
       console.log('[App] Connection restored');
       if (error && error.includes('cached data')) {
-        fetchMaintenanceData();
+        // Trigger a fetch by simulating date range change
+        setError(null);
+        setTimeout(() => {
+          fetchMaintenanceData(0);
+        }, 100);
       }
     };
 
     window.addEventListener('online', handleOnline);
     return () => window.removeEventListener('online', handleOnline);
-  }, [dateRange, error]);
+  }, []);
 
   return (
     <Layout
