@@ -301,7 +301,8 @@ class CostCodeService {
   extractBranchFromCode(costCode) {
     const normalized = costCode.trim().toUpperCase();
     for (const branch of BRANCH_PREFIXES) {
-      if (normalized.startsWith(branch + '-')) {
+      // Support both "QTN-" and "QTN " (dash and space separators)
+      if (normalized.startsWith(branch + '-') || normalized.startsWith(branch + ' ')) {
         return branch;
       }
     }
