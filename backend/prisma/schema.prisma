@@ -10,6 +10,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model UserType {
+  id             String    @id @default(cuid())
+  name           String    @unique
+  role           String    @default("User")
+  branch         String    @default("ALL")
+  assignedGroups String?   @db.Text // JSON array of group names
+  costCodes      String?   @db.Text // JSON array of cost code strings
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  // Relations
+  users          User[]
+
+  @@index([name])
+}
+
 model User {
   id                String            @id @default(cuid())
   username          String            @unique
@@ -19,13 +35,16 @@ model User {
   lastName         String
   role              String            @default("User") // ADMIN or User
   branch            String
-  userType          String?           // Link to user type for dynamic updates
+  userTypeId        String?           // FK to UserType
+  userTypeRelation  UserType?         @relation(fields: [userTypeId], references: [id], onDelete: SetNull)
   assignedCostCodes String?           @db.Text // JSON array of cost codes
   assignedGroups    String?           @db.Text // JSON array of groups (Maintenance, CapEx, etc)
   isActive          Boolean           @default(true)
   passwordMustChange Boolean          @default(true) // Force password change on first login
   createdAt         DateTime          @default(now())
   updatedAt         DateTime          @updatedAt
+
+  @@index([userTypeId])
 }
 
 model Setting {

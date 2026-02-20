@@ -752,37 +752,6 @@ app.delete('/api/users/:id', authMiddleware, adminOnly, adminLimiter, async (req
 
         await prisma.$transaction(transaction);
 
-        // If user type settings were updated, sync all users assigned to those types
-        const userTypesSetting = settings.find(s => s.key === 'user_type_cost_codes');
-        if (userTypesSetting) {
-          try {
-            const userTypes = JSON.parse(userTypesSetting.value);
-
-            // For each user type, find all users with that type and update them
-            for (const userType of userTypes) {
-              const usersToUpdate = await prisma.user.findMany({
-                where: { userType: userType.name }
-              });
-
-              // Update each user with the current user type settings
-              if (usersToUpdate.length > 0) {
-                await prisma.user.updateMany({
-                  where: { userType: userType.name },
-                  data: {
-                    role: userType.role || 'User',
-                    branch: userType.branch || 'PMB',
-                    assignedGroups: userType.assignedGroups ? JSON.stringify(userType.assignedGroups) : null,
-                    assignedCostCodes: userType.costCodes ? JSON.stringify(userType.costCodes) : null
-                  }
-                });
-              }
-            }
-          } catch (parseError) {
-            // If parsing fails, just skip the sync (user types might not be valid JSON)
-            if (process.env.NODE_ENV !== 'production') console.error('Error syncing users to updated user types:', parseError);
-          }
-        }
-
         res.json({ message: 'Settings updated successfully.' });
 
       } catch (error) {
@@ -1095,6 +1064,133 @@ app.get('/api/diagnostics', authMiddleware, adminOnly, async (req, res) => {
   } catch (error) {
     if (process.env.NODE_ENV !== 'production') console.error('Error getting diagnostics:', error);
     res.status(500).json({ error: 'Server error getting diagnostics' });
+  }
+});
+
+// User Type Endpoints
+app.get('/api/user-types', authMiddleware, adminOnly, dataLimiter, async (req, res) => {
+  try {
+    const userTypes = await prisma.userType.findMany({
+      orderBy: { createdAt: 'desc' }
+    });
+
+    const formattedTypes = userTypes.map(type => ({
+      id: type.id,
+      name: type.name,
+      role: type.role,
+      branch: type.branch,
+      assignedGroups: type.assignedGroups ? JSON.parse(type.assignedGroups) : [],
+      costCodes: type.costCodes ? JSON.parse(type.costCodes) : []
+    }));
+
+    res.json({
+      userTypes: formattedTypes,
+      count: formattedTypes.length,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    if (process.env.NODE_ENV !== 'production') console.error('Error fetching user types:', error);
+    res.status(500).json({ error: 'Server error fetching user types' });
+  }
+});
+
+app.post('/api/user-types', authMiddleware, adminOnly, adminLimiter, async (req, res) => {
+  try {
+    const { name, role, branch, assignedGroups, costCodes } = req.body;
+
+    if (!name) {
+      return res.status(400).json({ error: 'User type name is required' });
+    }
+
+    const userType = await prisma.userType.create({
+      data: {
+        name,
+        role: role || 'User',
+        branch: branch || 'ALL',
+        assignedGroups: assignedGroups ? JSON.stringify(assignedGroups) : null,
+        costCodes: costCodes ? JSON.stringify(costCodes) : null
+      }
+    });
+
+    res.status(201).json({
+      userType: {
+        id: userType.id,
+        name: userType.name,
+        role: userType.role,
+        branch: userType.branch,
+        assignedGroups: assignedGroups || [],
+        costCodes: costCodes || []
+      }
+    });
+  } catch (error) {
+    if (error.code === 'P2002') {
+      return res.status(409).json({ error: 'User type name already exists' });
+    }
+    if (process.env.NODE_ENV !== 'production') console.error('Error creating user type:', error);
+    res.status(500).json({ error: 'Server error creating user type' });
+  }
+});
+
+app.put('/api/user-types/:id', authMiddleware, adminOnly, adminLimiter, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, role, branch, assignedGroups, costCodes } = req.body;
+
+    const userType = await prisma.userType.update({
+      where: { id },
+      data: {
+        ...(name && { name }),
+        ...(role && { role }),
+        ...(branch && { branch }),
+        ...(assignedGroups !== undefined && { assignedGroups: JSON.stringify(assignedGroups) }),
+        ...(costCodes !== undefined && { costCodes: JSON.stringify(costCodes) })
+      }
+    });
+
+    res.json({
+      userType: {
+        id: userType.id,
+        name: userType.name,
+        role: userType.role,
+        branch: userType.branch,
+        assignedGroups: userType.assignedGroups ? JSON.parse(userType.assignedGroups) : [],
+        costCodes: userType.costCodes ? JSON.parse(userType.costCodes) : []
+      }
+    });
+  } catch (error) {
+    if (error.code === 'P2025') {
+      return res.status(404).json({ error: 'User type not found' });
+    }
+    if (error.code === 'P2002') {
+      return res.status(409).json({ error: 'User type name already exists' });
+    }
+    if (process.env.NODE_ENV !== 'production') console.error('Error updating user type:', error);
+    res.status(500).json({ error: 'Server error updating user type' });
+  }
+});
+
+app.delete('/api/user-types/:id', authMiddleware, adminOnly, adminLimiter, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Set userTypeId to NULL for all users with this type
+    await prisma.user.updateMany({
+      where: { userTypeId: id },
+      data: { userTypeId: null }
+    });
+
+    // Delete the user type
+    await prisma.userType.delete({
+      where: { id }
+    });
+
+    res.json({ message: 'User type deleted successfully' });
+  } catch (error) {
+    if (error.code === 'P2025') {
+      return res.status(404).json({ error: 'User type not found' });
+    }
+    if (process.env.NODE_ENV !== 'production') console.error('Error deleting user type:', error);
+    res.status(500).json({ error: 'Server error deleting user type' });
   }
 });
 

@@ -116,37 +116,19 @@ const UserManagement = ({ user }) => {
       const usersData = await usersResponse.json();
       setUsers(usersData.users || []);
 
-      // Fetch settings, specifically user_type_cost_codes
-      const settingsResponse = await fetch(`${API_BASE_URL}/settings`, {
+      // Fetch user types from new UserType table (instead of settings)
+      const userTypesResponse = await fetch(`${API_BASE_URL}/user-types`, {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         }
       });
 
-      if (!settingsResponse.ok) {
-        throw new Error('Failed to fetch settings');
+      if (!userTypesResponse.ok) {
+        throw new Error('Failed to fetch user types');
       }
-      const settingsData = await settingsResponse.json();
-      const userTypeSetting = settingsData.settings.find(s => s.key === 'user_type_cost_codes');
-
-      if (userTypeSetting && userTypeSetting.value) {
-        try {
-          setUserTypeCostCodesConfig(JSON.parse(userTypeSetting.value));
-        } catch (jsonError) {
-          console.error('Error parsing user_type_cost_codes JSON:', jsonError);
-          toast({
-            title: 'Error loading user type configurations',
-            description: 'Could not parse user type cost codes from settings.',
-            status: 'error',
-            duration: 5000,
-            isClosable: true,
-          });
-          setUserTypeCostCodesConfig([]); // Fallback to empty
-        }
-      } else {
-        setUserTypeCostCodesConfig([]); // No user type setting found
-      }
+      const userTypesData = await userTypesResponse.json();
+      setUserTypeCostCodesConfig(userTypesData.userTypes || []);
 
       // Fetch live cost codes and groups from database
       await fetchCostCodes();
@@ -155,6 +137,7 @@ const UserManagement = ({ user }) => {
       setError(null);
     } catch (err) {
       setError('Failed to load user data or configurations');
+      if (process.env.NODE_ENV !== 'production') console.error('Error fetching data:', err);
     } finally {
       setLoading(false);
     }
@@ -470,50 +453,71 @@ const UserManagement = ({ user }) => {
     }
   };
 
-  // User Type Management functions (Moved from Settings.jsx)
-  const persistUserTypeSettings = async (updatedUserTypes) => {
-    setSavingUserTypes(true);
+  // User Type Management functions - now using dedicated UserType endpoints
+  const createUserType = async (userData) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/settings`, {
+      const response = await fetch(`${API_BASE_URL}/user-types`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to create user type');
+      }
+
+      const data = await response.json();
+      return { success: true, userType: data.userType };
+    } catch (err) {
+      return { success: false, error: err.message };
+    }
+  };
+
+  const updateUserType = async (id, userData) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/user-types/${id}`, {
         method: 'PUT',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          settings: [
-            {
-              key: 'user_type_cost_codes',
-              value: JSON.stringify(updatedUserTypes)
-            }
-          ]
-        })
+        body: JSON.stringify(userData)
       });
 
       if (!response.ok) {
-        throw new Error('Failed to save user type settings');
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to update user type');
       }
 
-      setUserTypeCostCodesConfig(updatedUserTypes);
-      toast({
-        title: 'User type settings saved',
-        status: 'success',
-        duration: 3000,
-        isClosable: true,
-      });
-      return true;
+      const data = await response.json();
+      return { success: true, userType: data.userType };
     } catch (err) {
-      console.error('Error persisting user type settings:', err);
-      toast({
-        title: 'Error saving user type settings',
-        description: err.message,
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+      return { success: false, error: err.message };
+    }
+  };
+
+  const deleteUserType = async (id) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/user-types/${id}`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
-      return false;
-    } finally {
-      setSavingUserTypes(false);
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to delete user type');
+      }
+
+      return { success: true };
+    } catch (err) {
+      return { success: false, error: err.message };
     }
   };
 
@@ -527,30 +531,37 @@ const UserManagement = ({ user }) => {
       });
       return;
     }
-    // Check for duplicate name
-    if (userTypeCostCodesConfig.some(type => type.name.toLowerCase() === userTypeFormData.name.trim().toLowerCase())) {
-      toast({
-        title: 'User Type Name already exists',
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-      });
-      return;
-    }
 
-    const newUserType = {
+    setSavingUserTypes(true);
+    const result = await createUserType({
       name: userTypeFormData.name.trim(),
       role: userTypeFormData.role,
       branch: userTypeFormData.branch,
       assignedGroups: userTypeFormData.assignedGroups,
       costCodes: userTypeFormData.costCodes
-    };
-    const success = await persistUserTypeSettings([...userTypeCostCodesConfig, newUserType]);
-    if (success) {
+    });
+
+    if (result.success) {
+      toast({
+        title: 'User type created successfully',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
       onAddUserTypeClose();
-      setUserTypeFormData({ name: '', costCodes: [] }); // Reset form
-      setCostCodeSearchTerm(''); // Reset search term
+      setUserTypeFormData({ name: '', role: 'User', branch: 'PMB', assignedGroups: [], costCodes: [] });
+      setCostCodeSearchTerm('');
+      await fetchData(); // Refresh user types list
+    } else {
+      toast({
+        title: 'Error creating user type',
+        description: result.error,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
     }
+    setSavingUserTypes(false);
   };
 
   const handleEditUserType = async () => {
@@ -563,44 +574,66 @@ const UserManagement = ({ user }) => {
       });
       return;
     }
-    // Check for duplicate name (excluding the current editing user type)
-    if (userTypeCostCodesConfig.some(type => type.name.toLowerCase() === userTypeFormData.name.trim().toLowerCase() && type.name !== editingUserType.name)) {
+
+    setSavingUserTypes(true);
+    const result = await updateUserType(editingUserType.id, {
+      name: userTypeFormData.name.trim(),
+      role: userTypeFormData.role,
+      branch: userTypeFormData.branch,
+      assignedGroups: userTypeFormData.assignedGroups,
+      costCodes: userTypeFormData.costCodes
+    });
+
+    if (result.success) {
       toast({
-        title: 'User Type Name already exists',
-        status: 'error',
+        title: 'User type updated successfully',
+        status: 'success',
         duration: 3000,
         isClosable: true,
       });
-      return;
-    }
-
-    const updatedUserTypes = userTypeCostCodesConfig.map(type =>
-      type.name === editingUserType.name ? {
-        name: userTypeFormData.name.trim(),
-        role: userTypeFormData.role,
-        branch: userTypeFormData.branch,
-        assignedGroups: userTypeFormData.assignedGroups,
-        costCodes: userTypeFormData.costCodes
-      } : type
-    );
-    const success = await persistUserTypeSettings(updatedUserTypes);
-    if (success) {
       onEditUserTypeClose();
-      setEditingUserType(null); // Clear editing state
-      setUserTypeFormData({ name: '', costCodes: [] }); // Reset form
-      setCostCodeSearchTerm(''); // Reset search term
+      setEditingUserType(null);
+      setUserTypeFormData({ name: '', role: 'User', branch: 'PMB', assignedGroups: [], costCodes: [] });
+      setCostCodeSearchTerm('');
+      await fetchData(); // Refresh user types list
+    } else {
+      toast({
+        title: 'Error updating user type',
+        description: result.error,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
     }
+    setSavingUserTypes(false);
   };
 
   const handleDeleteUserType = async () => {
     if (!deletingUserType) return;
 
-    const updatedUserTypes = userTypeCostCodesConfig.filter(type => type.name !== deletingUserType.name);
-    const success = await persistUserTypeSettings(updatedUserTypes);
-    if (success) {
+    setSavingUserTypes(true);
+    const result = await deleteUserType(deletingUserType.id);
+
+    if (result.success) {
+      toast({
+        title: 'User type deleted successfully',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
       onDeleteUserTypeClose();
-      setDeletingUserType(null); // Clear deleting state
+      setDeletingUserType(null);
+      await fetchData(); // Refresh user types list
+    } else {
+      toast({
+        title: 'Error deleting user type',
+        description: result.error,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
     }
+    setSavingUserTypes(false);
   };
 
 
