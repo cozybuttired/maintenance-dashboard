@@ -60,27 +60,27 @@ class DataService {
       let result;
 
       if (branch) {
-        console.log(`${getSASTLogTime()} 📥 Fetching purchase records from ${branch}...`);
+        dataService.info(` 📥 Fetching purchase records from ${branch}...`);
         if (filters.startDate || filters.endDate) {
           console.log(`   Date range: ${filters.startDate} to ${filters.endDate}`);
         }
         result = await dbManager.queryBranch(branch, query, params);
-        console.log(`${getSASTLogTime()} 📊 Raw result for ${branch}:`, { success: result.success, dataLength: result.data?.length, error: result.error });
+        dataService.info(` 📊 Raw result for ${branch}:`, { success: result.success, dataLength: result.data?.length, error: result.error });
         const records = this._processRecords([result]);
-        console.log(`${getSASTLogTime()} ✅ Retrieved ${records.length} records from ${branch}`);
+        dataService.info(` ✅ Retrieved ${records.length} records from ${branch}`);
 
         // Cache for 5 minutes
         cacheService.set(cacheKey, records, 300);
         return records;
       } else {
-        console.log(`${getSASTLogTime()} 📥 Fetching purchase records from all branches...`);
+        dataService.info(` 📥 Fetching purchase records from all branches...`);
         if (filters.startDate || filters.endDate) {
           console.log(`   Date range: ${filters.startDate} to ${filters.endDate}`);
         }
         result = await dbManager.queryAllBranchesWithRetry(query, params);
         const records = this._processRecords(result);
         const successCount = result.filter(r => r.success).length;
-        console.log(`${getSASTLogTime()} ✅ Retrieved ${records.length} total records from ${successCount} branches`);
+        dataService.info(` ✅ Retrieved ${records.length} total records from ${successCount} branches`);
         result.forEach(r => {
           const icon = r.success ? '✅' : '❌';
           const recordCount = r.success ? (r.data?.length || 0) : 'N/A';
@@ -92,7 +92,7 @@ class DataService {
         return records;
       }
     } catch (error) {
-      console.error(`${getSASTLogTime()} ❌ Error fetching purchase records:`, error.message);
+      dataService.error(` ❌ Error fetching purchase records:`, error.message);
       throw error;
     }
   }
@@ -308,14 +308,14 @@ class DataService {
                 if (!this._isMalformedGroupName(record.group)) {
                   groupsSet.add(record.group);
                 } else {
-                  console.log(`${getSASTLogTime()} 🚫 Filtered out malformed group: "${record.group}"`);
+                  dataService.info(` 🚫 Filtered out malformed group: "${record.group}"`);
                 }
               }
             });
           }
         });
         groups = Array.from(groupsSet).sort();
-        console.log(`${getSASTLogTime()} 📋 Available groups: ${groups.join(', ')}`);
+        dataService.info(` 📋 Available groups: ${groups.join(', ')}`);
       }
 
       // Cache for 30 minutes (groups change less frequently)
