@@ -167,11 +167,12 @@ class CostCodeService {
 
   /**
    * Deduplicate cost codes across branches
-   * Takes raw cost codes from database and returns unique normalized codes
+   * Takes raw cost codes from database and returns unique original codes
+   * Uses normalized form for deduplication but returns original readable form
    *
    * Example:
    * Input: ['PMB-MNT-001', 'PTA-MNT-001', 'QTN-ELEC-001', 'PTA-ELEC-001']
-   * Output: ['MNT-001', 'ELEC-001']
+   * Output: ['PMB-MNT-001', 'QTN-ELEC-001'] (keeps first occurrence of each normalized form)
    */
   deduplicateCodes(costCodes) {
     const seen = new Set();
@@ -181,7 +182,7 @@ class CostCodeService {
       const normalized = this.normalize(code);
       if (normalized && !seen.has(normalized)) {
         seen.add(normalized);
-        unique.push(normalized);
+        unique.push(code);  // ✅ Push original code, not normalized
       }
     });
 
