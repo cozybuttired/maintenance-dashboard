@@ -13,6 +13,7 @@ services:
       # Node.js Configuration
       NODE_ENV: ${NODE_ENV:-development}
       PORT: 3001
+      TZ: Africa/Johannesburg
 
       # MySQL/Prisma Database Configuration
       # When running in Docker, use 'mysql-server' container name as the host
