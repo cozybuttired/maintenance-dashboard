@@ -156,15 +156,16 @@ function App() {
   }, [dateRange, user]);
 
   // Poll for fresh data every 45 seconds to keep consistency with MSSQL
+  // Only poll when viewing the dashboard, not when on other tabs (users, analytics, settings)
   useEffect(() => {
-    if (!user) return;
+    if (!user || activeItem !== 'dashboard') return;
 
     const interval = setInterval(() => {
       fetchMaintenanceData();
     }, 45000); // 45 seconds
 
     return () => clearInterval(interval);
-  }, [user]);
+  }, [user, activeItem]);
 
   const validateToken = async () => {
     try {
