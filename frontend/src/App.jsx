@@ -155,6 +155,17 @@ function App() {
     return () => clearTimeout(timer);
   }, [dateRange, user]);
 
+  // Poll for fresh data every 45 seconds to keep consistency with MSSQL
+  useEffect(() => {
+    if (!user) return;
+
+    const interval = setInterval(() => {
+      fetchMaintenanceData();
+    }, 45000); // 45 seconds
+
+    return () => clearInterval(interval);
+  }, [user]);
+
   const validateToken = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/auth/me`, {
