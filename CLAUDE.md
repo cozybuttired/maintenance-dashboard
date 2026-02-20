@@ -57,6 +57,21 @@ After changes:
 2. Test affected features manually
 3. Check browser console for errors
 
+## Workflow: Fix → Test → Push → Pull → Restart
+
+**Chad's preferred workflow for this production project:**
+When you fix a bug or implement a feature, follow this sequence:
+1. **Fix** the code locally
+2. **Verify** the fix works (review code, check for errors)
+3. **Commit & Push** to git (create a meaningful commit message)
+4. **Pull** changes on production server (10.0.60.57)
+5. **Rebuild & Restart** Docker containers:
+   - `docker compose build --no-cache [service]`
+   - `docker compose up -d [service]`
+6. **Verify** container is healthy before closing
+
+This keeps production in sync immediately after fixes. (Note: Other projects may spend more time in dev before this workflow applies.)
+
 ## Compaction Instructions
 When compacting conversation history, preserve:
 - Recent code changes and their locations
