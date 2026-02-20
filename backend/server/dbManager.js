@@ -108,67 +108,113 @@ class DatabaseManager {
     return this.poolPromises.get(branch);
   }
 
+  async executeBranchQuery(branch, query, params = []) {
+    const config = this.branchConfigs[branch];
+    const startTime = Date.now();
+
+    try {
+      // Create isolated connection for this query to ensure data isolation
+      const connection = new sql.ConnectionPool({
+        user: process.env.MSSQL_USER,
+        password: process.env.MSSQL_PASS,
+        server: config.server,
+        database: config.database,
+        port: parseInt(process.env.MSSQL_PORT),
+        options: {
+          encrypt: true,
+          trustServerCertificate: true,
+          enableArithAbort: true,
+          integratedSecurity: false,
+          connectTimeout: 15000
+        },
+        pool: {
+          max: 2,
+          min: 0,
+          idleTimeoutMillis: 10000
+        }
+      });
+
+      await connection.connect();
+      const request = connection.request();
+
+      // Bind parameters
+      params.forEach((param, index) => {
+        request.input(`param${index}`, sql.NVarChar, param);
+      });
+
+      const result = await request.query(query);
+      const duration = Date.now() - startTime;
+
+      await connection.close();
+
+      return {
+        branch,
+        data: result.recordset,
+        success: true,
+        duration: `${duration}ms`,
+        recordCount: result.recordset.length
+      };
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      return {
+        branch,
+        data: [],
+        success: false,
+        error: error.message,
+        duration: `${duration}ms`
+      };
+    }
+  }
+
   async queryAllBranches(query, params = []) {
-    // Use Promise.all to query all branches in parallel instead of sequentially
-    const promises = this.branchOrder.map(async (branch) => {
-      const config = this.branchConfigs[branch];
-      try {
-        const startTime = Date.now();
+    // First attempt: Query all branches in parallel
+    const promises = this.branchOrder.map(branch =>
+      this.executeBranchQuery(branch, query, params)
+    );
 
-        // Create isolated connection for this query to ensure data isolation
-        const connection = new sql.ConnectionPool({
-          user: process.env.MSSQL_USER,
-          password: process.env.MSSQL_PASS,
-          server: config.server,
-          database: config.database,
-          port: parseInt(process.env.MSSQL_PORT),
-          options: {
-            encrypt: true,
-            trustServerCertificate: true,
-            enableArithAbort: true,
-            integratedSecurity: false,
-            connectTimeout: 15000
-          },
-          pool: {
-            max: 2,
-            min: 0,
-            idleTimeoutMillis: 10000
-          }
-        });
-
-        await connection.connect();
-        const request = connection.request();
-
-        // Bind parameters
-        params.forEach((param, index) => {
-          request.input(`param${index}`, sql.NVarChar, param);
-        });
-
-        const result = await request.query(query);
-        const duration = Date.now() - startTime;
-
-        await connection.close();
-
-        return {
-          branch,
-          data: result.recordset,
-          success: true,
-          duration: `${duration}ms`,
-          recordCount: result.recordset.length
-        };
-      } catch (error) {
-        console.error(`[${new Date().toISOString()}] ❌ Query failed for ${branch}:`, error.message);
-        return {
-          branch,
-          data: [],
-          success: false,
-          error: error.message
-        };
-      }
-    });
-
-    // Execute all queries in parallel and wait for all to complete
     const results = await Promise.all(promises);
+
+    // Identify failed branches
+    const failedBranches = results.filter(r => !r.success).map(r => r.branch);
+
+    if (failedBranches.length > 0) {
+      console.log(`[${new Date().toISOString()}] 🔄 Retrying ${failedBranches.length} failed branch(es): ${failedBranches.join(', ')}`);
+
+      // Retry failed branches individually (up to 2 more times with exponential backoff)
+      for (let retryCount = 1; retryCount <= 2; retryCount++) {
+        const delay = 500 * Math.pow(2, retryCount - 1); // 500ms, 1000ms
+
+        // Wait before retrying
+        await new Promise(resolve => setTimeout(resolve, delay));
+
+        // Retry each failed branch
+        for (const branch of failedBranches) {
+          const retryResult = await this.executeBranchQuery(branch, query, params);
+
+          if (retryResult.success) {
+            console.log(`[${new Date().toISOString()}] ✅ ${branch} recovered on retry #${retryCount}`);
+            // Replace the failed result with the successful one
+            const failedIndex = results.findIndex(r => r.branch === branch);
+            results[failedIndex] = retryResult;
+            // Remove from failed list for next retry
+            failedBranches.splice(failedBranches.indexOf(branch), 1);
+          } else {
+            console.log(`[${new Date().toISOString()}] ❌ ${branch} still failing: ${retryResult.error}`);
+          }
+        }
+
+        // If no more failures, break early
+        if (failedBranches.length === 0) {
+          console.log(`[${new Date().toISOString()}] ✅ All branches recovered after retry #${retryCount}`);
+          break;
+        }
+      }
+
+      // Log final status
+      const successCount = results.filter(r => r.success).length;
+      console.log(`[${new Date().toISOString()}] 📊 Final result: ${successCount}/${this.branchOrder.length} branches succeeded`);
+    }
+
     return results;
   }
 
