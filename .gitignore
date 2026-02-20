@@ -93,3 +93,19 @@ lerna-debug.log*
 coverage/
 .nyc_output/
 .jest-cache/
+
+# ============================================================================
+# Documentation with Sensitive Data (DO NOT COMMIT)
+# ============================================================================
+DATABASE_SETUP.md
+DEPLOYMENT.md
+SETUP_SUMMARY.md
+DOCKER_README.md
+IMMEDIATE_ACTIONS.md
+SECURITY_CHECKLIST.md
+*_FIXES_*.md
+*_GUIDE.md
+*_ANALYSIS.md
+START_HERE.md
+PERFORMANCE.md
+TESTING_PERFORMANCE.md
