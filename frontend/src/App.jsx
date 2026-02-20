@@ -403,23 +403,6 @@ function App() {
     );
   }
 
-  // Detect when connection is restored and retry
-  useEffect(() => {
-    const handleOnline = () => {
-      console.log('[App] Connection restored');
-      if (error && error.includes('cached data')) {
-        // Trigger a fetch by simulating date range change
-        setError(null);
-        setTimeout(() => {
-          fetchMaintenanceData(0);
-        }, 100);
-      }
-    };
-
-    window.addEventListener('online', handleOnline);
-    return () => window.removeEventListener('online', handleOnline);
-  }, []);
-
   return (
     <Layout
       user={user}
