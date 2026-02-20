@@ -375,7 +375,7 @@ class DatabaseManager {
       retryResults.forEach(({ idx, result }) => {
         results[idx] = result;
         const icon = result.success ? '✅' : '❌';
-        console.log(`${getSASTLogTime()} ${icon} ${result.branch} retry attempt ${attempt}`);
+        database.info(`${icon} ${result.branch} retry attempt ${attempt}`);
       });
     }
     
